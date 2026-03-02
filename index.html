@@ -25,10 +25,11 @@
 
     <!-- VIDEO STAGE -->
     <div class="stage" aria-hidden="true">
-      <video id="bgVideo" autoplay muted playsinline preload="auto">
-        <source src="assets/videos/slide1.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <img
+        src="assets/images/logo/background1.jpg"
+        id="bgImage"
+        alt="Background"
+      />
       <div class="overlay"></div>
     </div>
 
@@ -40,23 +41,25 @@
     </main>
 
     <!-- ABOUT ORGANIZATION -->
-    <section class="about" id="about">
+    <section class="about fade-section" id="about">
       <div class="about-content">
         <div class="about-logo">
-          <img src="./assets/images/logo/logo.png" alt="logo-himpunan" />
+          <img
+            src="./assets/images/logo/logokabinetbottom.png"
+            alt="logo-himpunan"
+          />
         </div>
         <div class="about-text">
           <h1>Tentang Kami</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-            deserunt consequatur tenetur, quae esse aliquam culpa architecto?
-            Modi nisi eius aut voluptates quis cumque, ab hic accusantium
-            dolorum voluptatem delectus. Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Itaque, sequi odio! Maiores eligendi fuga unde
-            reprehenderit rerum dolores suscipit nobis odio itaque recusandae
-            voluptatibus, amet laudantium tenetur nam aliquam assumenda!
+            Himpunan Mahasiswa Oseanografi (HIMAOSE) adalah organisasi mahasiswa
+            tingkat program studi di Universitas Diponegoro yang bersifat
+            otonom. HIMAOSE menjadi wadah aspirasi, pengembangan keilmuan, serta
+            pembinaan karakter mahasiswa Oseanografi dalam bidang akademik dan
+            non-akademik. Berdiri pada 4 Maret 2017, HIMAOSE terus berkembang
+            sebagai tempat belajar dan bertumbuh bagi mahasiswa.
           </p>
-          <a href="about.html" class="about-link"
+          <a href="profile.html" class="about-link"
             >Selengkapnya <i data-feather="arrow-right"></i
           ></a>
         </div>
@@ -71,5 +74,8 @@
 
     <!-- FOOTER LOAD -->
     <script src="js/load-footer.js"></script>
+
+    <!-- Scroll animations -->
+    <script src="js/scroll-animations.js"></script>
   </body>
 </html>
