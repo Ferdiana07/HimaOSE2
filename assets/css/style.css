@@ -146,6 +146,12 @@ body {
   transform: none;
 }
 
+/* khusus section counter: jangan ikut fade, cuma angkanya */
+.counter.fade-section {
+  opacity: 1;
+  transform: none;
+}
+
 /* detail animasi elemen di dalam about */
 .about.fade-section .about-logo,
 .about.fade-section .about-text,
@@ -181,6 +187,65 @@ body {
 .about.fade-section.is-visible .about-link {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* counter section */
+.counter {
+  background: linear-gradient(45deg, #092751, #3885c9);
+  padding: 2.5rem 3rem;
+}
+.counter-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+.counter-item {
+  flex: 1;
+  text-align: center;
+}
+.counter-number {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #f3d64e;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+.counter-label {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+}
+
+/* aktif saat terlihat */
+.counter.fade-section.is-visible .counter-number {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .counter {
+    padding: 2rem 1.5rem;
+  }
+  .counter-inner {
+    gap: 1.5rem;
+  }
+  .counter-number {
+    font-size: 2.1rem;
+    letter-spacing: 0.18em;
+  }
+  .counter-label {
+    font-size: 0.85rem;
+  }
 }
 
 /* Media Queries */
