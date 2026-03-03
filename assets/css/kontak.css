@@ -1,8 +1,12 @@
 /* Styling Khusus Halaman Kontak */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #1a1a1a;
-    --accent-color: #f0f0f0;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-yellow-light: #F3D64E;
+    --color-yellow-dark: #FCB50F;
+    --color-blue-dark: #5182CD;
+    --color-blue-light: #54C4FC;
+    --color-blue-pale: #88D8FF;
 }
 
 body {
@@ -10,26 +14,26 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--color-white);
+    color: var(--color-black);
 }
 
 /* Header Section */
 .contact-header {
-    background-color: #000000; 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/bg/bg.jpeg'); 
+    background-color: var(--color-black); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg'); 
     background-size: cover; 
     background-position: center;
-    color: #ffffff;
+    color: var(--color-white);
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 10px;
     opacity: 0.9;
 }
 
 .contact-header h1 {
     font-size: 2.5rem;
     margin-bottom: 15x;
-    color: #ffffff; 
+    color: var(--color-yellow-light); 
 }
 
 /* Main Container */
@@ -43,11 +47,13 @@ body {
 }
 
 .card {
-    background: white;
-    border-radius: 5px;
+    background:
+        linear-gradient(var(--color-white), var(--color-white)) padding-box,
+        linear-gradient(135deg, var(--color-blue-light), var(--color-yellow-light)) border-box;
+    border-radius: 10px;
     padding: 30px;
-    box-shadow: 0px 0px 20px #f0f0f0;
-    border: 2px solid white;
+    box-shadow: none;
+    border: 3px solid transparent;
 }
 
 /* Info Styles */
@@ -59,37 +65,39 @@ body {
 }
 
 .icon-circle {
-    background-color: none;
-    padding: 10px;
-    border-radius: 50%;
-    min-width: 30px;
+    background-color: var(--color-blue-pale);
+    padding: 3px;
+    border-radius: 15%;
+    min-width: 10px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .info-content h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.1rem;
+    margin: 0;
+    font-size: 1rem;
 }
 
 .info-content p {
     margin: 0;
-    color: #4b5563;
+    color: var(--color-black);
     line-height: 1.5;
+    flex: 1;
 }
 
 /* Partnership Card */
 .partnership-card {
-    margin-top: 30px;
-    border: 2px dashed #ffffff;
-    background-color: #ffffff;
+    margin-top: 20px;
+    border: 3px solid transparent;
+    background-color: none;
 }
 
 .coming-soon-btn {
-    background-color: cyan;
-    color: #000000;
+    background-color: var(--color-blue-pale);
+    color: var(--color-black);
     padding: 10px 20px;
     border-radius: 8px;
-    display: inline-block;
+    display: center;
     margin-top: 15px;
     font-weight: 600;
 }

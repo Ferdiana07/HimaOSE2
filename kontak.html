@@ -13,7 +13,7 @@
 
     <section class="contact-header">
         <h1>Kontak</h1>
-        <p>Hubungi kami untuk informasi lebih lanjut atau kerja sama</p>
+        <p>Hubungi kami untuk informasi lebih lanjut atau ingin bekerja sama</p>
     </section>
 
     <main class="container">
@@ -67,19 +67,11 @@
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                // Kalau elemen sudah masuk layar, tambahkan class 'show'
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    // Opsional: unobserve kalau cuma mau animasinya jalan 1x
-                    // observer.unobserve(entry.target); 
-                } else {
-                    // Hapus komentar di bawah kalau mau animasinya ngulang tiap kali di-scroll bolak-balik
-                    // entry.target.classList.remove('show'); 
+                    entry.target.classList.add('show'); 
                 }
             });
         });
-
-        // Targetkan semua elemen yang punya class hidden-left dan hidden-right
         const hiddenElements = document.querySelectorAll('.hidden-left, .hidden-right');
         hiddenElements.forEach((el) => observer.observe(el));
     </script>
