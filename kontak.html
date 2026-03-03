@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontak - HimaOSE</title>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="./assets/css/kontak.css">
+
 </head>
 <body>
 
@@ -15,7 +17,7 @@
     </section>
 
     <main class="container">
-        <div class="info-section">
+        <div class="info-section hidden-left" style="transition-delay: 0.0s;">
             <div class="card">
                 <h2>Informasi Kontak</h2>
                 
@@ -38,7 +40,7 @@
                 </div>
 
                 <div class="info-group">
-                    <div class="icon-circle">📞</div>
+                    <div class="icon-circle">☎️</div>
                     <div class="info-content">
                         <h3>WhatsApp</h3>
                         <p>—</p>
@@ -46,21 +48,40 @@
                 </div>
             </div>
 
-            <div class="card partnership-card">
+            <div class="card partnership-card" style="transition-delay: 0.1s;">
                 <h3>🤝 Partnership & Kerja Sama</h3>
                 <p>Informasi kontak khusus untuk partnership, sponsorship, dan kerja sama akan segera tersedia.</p>
                 <div class="coming-soon-btn">Coming Soon</div>
             </div>
         </div>
 
-        <div class="map-container">
+        <div class="map-container hidden-right" style="transition-delay: 0.2s;">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15838.455243177652!2d110.432049!3d-7.053805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c1b3d582ad3%3A0x6d907cc320cc1454!2sUniversitas%20Diponegoro!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1979.8244208074148!2d110.4403537!3d-7.0504854!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c1bf1e9d42f%3A0x1bf69ea8e0d3735f!2sFakultas%20Perikanan%20dan%20Ilmu%20Kelautan%20Universitas%20Diponegoro!5e0!3m2!1sid!2sid!4v1772510603129!5m2!1sid!2sid" 
                 allowfullscreen="" 
                 loading="lazy">
             </iframe>
         </div>
     </main>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                // Kalau elemen sudah masuk layar, tambahkan class 'show'
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    // Opsional: unobserve kalau cuma mau animasinya jalan 1x
+                    // observer.unobserve(entry.target); 
+                } else {
+                    // Hapus komentar di bawah kalau mau animasinya ngulang tiap kali di-scroll bolak-balik
+                    // entry.target.classList.remove('show'); 
+                }
+            });
+        });
+
+        // Targetkan semua elemen yang punya class hidden-left dan hidden-right
+        const hiddenElements = document.querySelectorAll('.hidden-left, .hidden-right');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>

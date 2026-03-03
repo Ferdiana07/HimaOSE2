@@ -6,7 +6,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -14,10 +16,13 @@ body {
 
 /* Header Section */
 .contact-header {
-    background-color: #000000;
-    color: rgb(255, 255, 255);
+    background-color: #000000; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/bg/bg.jpeg'); 
+    background-size: cover; 
+    background-position: center;
+    color: #ffffff;
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
 }
 
 .contact-header h1 {
@@ -28,35 +33,35 @@ body {
 
 /* Main Container */
 .container {
-    max-width: 1200px;
-    margin: -40px auto 50px;
+    max-width: 1000px;
+    margin: 10px auto 50px;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 30px;
-    padding: 0 20px;
+    padding: 25px;
 }
 
 .card {
     background: white;
-    border-radius: 12px;
+    border-radius: 5px;
     padding: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0px 0px 20px #f0f0f0;
+    border: 2px solid white;
 }
 
 /* Info Styles */
 .info-group {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     display: flex;
     align-items: flex-start;
     gap: 15px;
 }
 
 .icon-circle {
-    background-color: #eff6ff;
+    background-color: none;
     padding: 10px;
     border-radius: 50%;
-    min-width: 40px;
+    min-width: 30px;
     text-align: center;
 }
 
@@ -74,13 +79,13 @@ body {
 /* Partnership Card */
 .partnership-card {
     margin-top: 30px;
-    border: 2px dashed #e5e7eb;
-    background-color: #fffbeb;
+    border: 2px dashed #ffffff;
+    background-color: #ffffff;
 }
 
 .coming-soon-btn {
-    background-color: #fef3c7;
-    color: #d97706;
+    background-color: cyan;
+    color: #000000;
     padding: 10px 20px;
     border-radius: 8px;
     display: inline-block;
@@ -89,11 +94,12 @@ body {
 }
 
 /* Map Container */
-.map-container {
-    border-radius: 12px;
+.map-container {    
+    border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    height: 500px;
+    height: 100%;
+    min-height: 400px;
+    box-shadow: none;
 }
 
 iframe {
@@ -108,4 +114,24 @@ iframe {
         grid-template-columns: 1fr; 
         margin-top: 20px; 
     }
+}
+
+/* Animasi */
+.hidden-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Efek smooth easing */
+}
+
+/* State awal elemen kanan (sembunyi dan geser ke kanan) */
+.hidden-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* State akhir saat elemen masuk ke viewport (muncul dan balik ke titik 0) */
+.show {
+    opacity: 1;
+    transform: translateX(0);
 }
