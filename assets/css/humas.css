@@ -1,0 +1,41 @@
+/* =========================
+      RESET & GLOBAL (BENDAHARA)
+========================= */
+.humas {
+  background: #f0f8ff;
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+/* =========================
+            HERO
+========================= */
+.humas > .profile-hero {
+  height: 50vh;
+  background-color: #000;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0.95;
+}
+
+.humas > .profile-hero h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: -5px;
+  color: var(--color-yellow-light);
+}
+
+
+.section-humas ol li {
+  border: 2px solid var(--color-yellow-dark);
+}

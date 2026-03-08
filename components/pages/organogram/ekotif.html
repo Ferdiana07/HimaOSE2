@@ -1,0 +1,49 @@
+<div class="ekotif">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Ekonomi Kreatif</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG EKOTIF  -->
+  <section class="section-about-himaose section-ekotif scroll-reveal">
+    <h2>Tentang Ekonomi Kreatif (EKOTIF)</h2>
+    <p>
+      Bidang ekotif berperan penting dalam pemasukan keuangan sebagai supplier
+      kebutuhan porgram kerja himpunan dan kebutuhan mahasiswa oseanografi.
+      Ekotif sebagai wadah yang menaungi dan mengembangkan minat, bakaat, dan
+      potensi mahasiswa departemen oseanografi dalam bidang kewirausahaan.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-ekotif scroll-reveal"
+  >
+    <h2>Program Kerja Ekonomi Kreatif (EKOTIF)</h2>
+    <ol>
+      <li>Oseshop</li>
+      <li>Infortif</li>
+      <li>Osenso</li>
+      <li>Sayembara Design</li>
+      <li>Osepreneur</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

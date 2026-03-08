@@ -9,17 +9,12 @@
   --color-blue-pale: #88d8ff;
 }
 
-body {
-  overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px; /* samakan dengan halaman utama supaya navbar/teks tidak terlihat lebih kecil */
-  margin: 0;
-  background-color: var(--color-white);
+.kontak {
   color: var(--color-black);
 }
 
 /* Header Section */
-.contact-header {
+.kontak .contact-header {
   background-color: var(--color-black);
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -32,18 +27,18 @@ body {
   opacity: 0.9;
 }
 
-.contact-header h1 {
+.kontak .contact-header h1 {
   font-size: 2.5rem;
-  margin-bottom: 15x;
+  margin-bottom: 15px;
   color: var(--color-yellow-light);
 }
 
 /* Main Container */
-.container {
+.kontak .container {
   max-width: 1000px;
   margin: 10px auto 50px;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   padding: 25px;
 }

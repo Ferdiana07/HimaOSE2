@@ -1,0 +1,83 @@
+<div class="kontak">
+  <section class="contact-header">
+    <h1>Kontak</h1>
+    <p>Hubungi kami untuk informasi lebih lanjut atau ingin bekerja sama</p>
+  </section>
+
+  <main class="container">
+    <div class="info-section hidden-left">
+      <div class="card">
+        <h2>Informasi Kontak</h2>
+
+        <div class="info-group" style="transition-delay: 0s">
+          <div class="icon-circle">📍</div>
+          <div class="info-content">
+            <h3>Alamat</h3>
+            <p>
+              Gedung Prof. Ir. Eko Budihardjo, M.Sc.,<br />
+              Fakultas Teknik Undip, Jl. Prof. Soedarto, SH,<br />
+              Tembalang, Semarang, Jawa Tengah, 50275
+            </p>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="icon-circle">✉️</div>
+          <div class="info-content">
+            <h3>Email</h3>
+            <p>—</p>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="icon-circle">☎️</div>
+          <div class="info-content">
+            <h3>WhatsApp</h3>
+            <p>—</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card partnership-card" style="transition-delay: 0.2s">
+        <h3>🤝 Partnership & Kerja Sama</h3>
+        <p>
+          Informasi kontak khusus untuk partnership, sponsorship, dan kerja sama
+          akan segera tersedia.
+        </p>
+        <div class="coming-soon-btn">Coming Soon</div>
+      </div>
+    </div>
+
+    <div class="map-container hidden-right" style="transition-delay: 0.4s">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1979.8244208074148!2d110.4403537!3d-7.0504854!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c1bf1e9d42f%3A0x1bf69ea8e0d3735f!2sFakultas%20Perikanan%20dan%20Ilmu%20Kelautan%20Universitas%20Diponegoro!5e0!3m2!1sid!2sid!4v1772510603129!5m2!1sid!2sid"
+        allowfullscreen=""
+        loading="lazy"
+      >
+      </iframe>
+    </div>
+  </main>
+
+  <!-- Page scripts -->
+  <script>
+    $(document).ready(function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Menggunakan jQuery untuk menambah class
+            $(entry.target).addClass("show");
+          }
+        });
+      });
+
+      // Menyeleksi elemen dengan gaya jQuery
+      const $hiddenElements = $(".hidden-left, .hidden-right");
+
+      // Loop elemen menggunakan jQuery .each()
+      // Lalu ambil elemen DOM aslinya dengan [0] atau get(0)
+      $hiddenElements.each(function () {
+        observer.observe(this);
+      });
+    });
+  </script>
+</div>

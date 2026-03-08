@@ -1,0 +1,49 @@
+<div class="mi">
+<!-- HERO -->
+    <main class="profile-hero" role="main">
+        <h1>Media Informasi</h1>
+        <p>Kabinet Resonansi Asa 2026</p>
+    </main>
+
+    <!-- TENTANG MI  -->
+    <section class="section-about-himaose section-MI scroll-reveal">
+        <h2>Tentang Media Informasi (MI)</h2>
+        <p>
+        Media informasi merupakan suatu bidang yang
+        bergerak dalam penyebaran informasi baik dari
+        internal maupun eksternal HIMAOSE. Bidang ini
+        berfokus pada kreativitas baik berupa design juga
+        editing foto/video.
+        </p>
+    </section>
+
+    <section class="section-about-himaose section-plain section-MI scroll-reveal">
+        <h2>Program Kerja Media Informasi (MI)</h2>
+        <ol>
+            <li>Pengelolaan sosial media</li>
+            <li>Apresiasi wisuda</li>
+            <li>Dokumentasi dan publikasi</li>
+            <li>Sapa osi</li>
+            <li>Company profile</li>
+            <li>Cerdas Media</li>
+        </ol>
+    </section>
+
+    <!-- SCROLL REVEAL INLINE -->
+    <script>
+        // scroll reveal tanpa file JS eksternal
+        window.addEventListener("scroll", function () {
+            const reveals = document.querySelectorAll(".scroll-reveal");
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 100) {
+                    el.classList.add("visible");
+                }
+            });
+        });
+
+        // trigger on load juga
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</div>

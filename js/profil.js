@@ -1,63 +1,57 @@
-// Intersection Observer untuk scroll animation
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -100px 0px",
-};
+$(document).ready(function () {
+  // 1. Intersection Observer (Tetap pakai API native karena jQuery tidak punya wrapper khusus ini)
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px",
+  };
 
-const observer = new IntersectionObserver(function (entries) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
-      observer.unobserve(entry.target);
-    }
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        $(entry.target).addClass("active"); // Versi jQuery
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // 2. Apply observer ke semua elemen .scroll-reveal
+  $(".scroll-reveal").each(function () {
+    observer.observe(this);
   });
-}, observerOptions);
 
-// Apply observer ke semua elemen dengan class scroll-reveal
-document.addEventListener("DOMContentLoaded", function () {
-  const revealElements = document.querySelectorAll(".scroll-reveal");
-  revealElements.forEach((el) => observer.observe(el));
-  // open visi by default if section exists
-  if (document.getElementById("visi")) {
-    const firstCard = document.querySelector(".vm-card");
-    showVM("visi", firstCard);
+  // 3. Auto-open visi by default
+  if ($("#visi").length) {
+    const $firstCard = $(".vm-card").first();
+    showVM("visi", $firstCard);
   }
 
-  // ensure feather icons are rendered for any dynamic icons
+  // 4. Feather icons
   if (window.feather) {
     feather.replace();
   }
 });
 
-// Toggle description function (used by logo cards)
-function toggleDesc(id) {
-  const el = document.getElementById(id);
-  if (el.style.display === "block") {
-    el.style.display = "none";
+// --- Functions (Dibuat global agar bisa dipanggil dari HTML onclick) ---
+
+// Toggle description function
+window.toggleDesc = function (id) {
+  const $el = $("#" + id);
+
+  if ($el.is(":visible")) {
+    $el.hide();
   } else {
-    document.querySelectorAll(".philo-desc").forEach((desc) => {
-      desc.style.display = "none";
-    });
-    el.style.display = "block";
+    $(".philo-desc").hide();
+    $el.show();
   }
-}
+};
 
-// Show vision or mission, hiding the other and highlight the card
-function showVM(id, card) {
-  // hide contents
-  document.querySelectorAll(".vm-content").forEach((el) => {
-    el.classList.remove("show");
-  });
-  const el = document.getElementById(id);
-  if (el) {
-    el.classList.add("show");
-  }
+// Show vision or mission
+window.showVM = function (id, card) {
+  // Hide contents
+  $(".vm-content").removeClass("show");
+  $("#" + id).addClass("show");
 
-  // card highlight
-  document.querySelectorAll(".vm-card").forEach((c) => {
-    c.classList.remove("selected");
-  });
-  if (card) {
-    card.classList.add("selected");
-  }
-}
+  // Card highlight
+  $(".vm-card").removeClass("selected");
+  $(card).addClass("selected");
+};

@@ -1,0 +1,47 @@
+<div class="bendahara">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Bendahara</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- BENDAHARA -->
+
+  <section class="section-about-himaose section-bendahara scroll-reveal">
+    <h2>Tentang Bendahara</h2>
+    <p>
+      Bendahara merupakan bidang yang bertanggung jawab atas pengelolaan
+      keuangan organisasi yang membuat kebijakan keuangan dan mengalokasikannya
+      sesuai dengan tingkat kebutuhan pada masing-masing kegiatan.
+    </p>
+  </section>
+
+  <section class="section-about-himaose section-plain scroll-reveal">
+    <h2>Program Kerja Bendahara</h2>
+    <ol>
+      <li>Pembukuan</li>
+      <li>Uang Kas</li>
+      <li>Reward Kas</li>
+      <li>Koordinasi Bidang</li>
+      <li>Koordinasi Bendahara Kegiatan</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

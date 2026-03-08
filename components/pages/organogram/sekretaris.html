@@ -1,0 +1,47 @@
+<div class="sekretaris">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Sekretaris</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG SEKRE  -->
+  <section class="section-about-himaose section-sekretaris scroll-reveal">
+    <h2>Tentang Sekretaris</h2>
+    <p>
+      Sekretaris Bertugas untuk melakukan manajerial administrasi yang rapi,
+      lengkap, dan terstruktur guna memfasilitasi kebutuhan administrasi untuk
+      seluruh anggota himpunan serta mewujudkan lembaga mahasiswa yang baik dan
+      profesional.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-sekretaris scroll-reveal"
+  >
+    <h2>Program Kerja Sekretaris</h2>
+    <ol>
+      <li>Database Pengurus</li>
+      <li>Penyediaan Surat Menyurat</li>
+      <li>Paketan Pengurus</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

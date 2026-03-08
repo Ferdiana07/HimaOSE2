@@ -1,0 +1,51 @@
+<div class="seniora">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Seni dan Olahraga</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG SENIORA  -->
+  <section class="section-about-himaose section-seniora scroll-reveal">
+    <h2>Tentang Seni dan Olahraga (SENIORA)</h2>
+    <p>
+      Bidang seni dan olahraga merupakan bidang yang berfokus pada pengembangan
+      bakat dan talenta yang dimiliki setiap anggota himpunan sehingga dapat
+      mengembangkan diri secara optimal diluar kegiatan akademik kampus.
+      Berfungsi mewadahi kegiatan pengembangan bakat dan talenta non-akademik di
+      departemen oseanografi, melakukan pendampingan terhadap komunitas yang ada
+      agar semakin berkembang secara optimal serta memberikan apresiasi kepada
+      anggota yang berprestasi di bidang non- akademik.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-seniora scroll-reveal"
+  >
+    <h2>Program Kerja Seni dan Olahraga (SENIORA)</h2>
+    <ol>
+      <li>Marine Fun</li>
+      <li>Marine Sports Week</li>
+      <li>Marine Exhibition</li>
+      <li>Sports and Arts Education</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>
