@@ -1,0 +1,470 @@
+/* =========================
+           COLOR SYSTEM
+========================= */
+:root {
+  --text-dark: #222;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-yellow-light: #f3d64e;
+  --color-yellow-dark: #fcb50f;
+  --color-blue-dark: #5182cd;
+  --color-blue-light: #54c4fc;
+  --color-blue-pale: #88d8ff;
+}
+
+/* =========================
+    RESET & GLOBAL
+========================= */
+
+.sekretaris {
+  background: #f0f8ff;
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+/* =========================
+           HERO
+========================= */
+.sekretaris > .profile-hero {
+  height: 50vh;
+  background-color: #000;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0.95;
+}
+
+.sekretaris > .profile-hero h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: -5px;
+  color: #f3d64e;
+}
+
+/* =========================
+           ABOUT SECTION CARD
+========================= */
+.section-about-himaose {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 60px 50px;
+  background: #f0f8ff;
+  position: relative;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.section-about-himaose::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-dark),
+    var(--color-blue-light),
+    var(--color-yellow-dark)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+
+  /* buat Firefox */
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.section-about-himaose:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(81, 130, 205, 0.2);
+}
+
+.section-about-himaose:hover::before {
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-light),
+    var(--color-blue-pale),
+    var(--color-yellow-light)
+  );
+}
+
+.section-about-himaose h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--color-blue-dark);
+}
+
+.section-about-himaose p {
+  text-align: justify;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.9;
+}
+
+.section-about-himaose p:first-of-type::first-letter {
+  font-size: 3rem;
+  font-weight: 700;
+  float: left;
+  line-height: 1;
+  padding-right: 8px;
+  color: var(--color-blue-dark);
+}
+.section-about-himaose ol {
+  list-style: none;
+  counter-reset: progja-counter;
+  padding: 0;
+  margin: 0;
+}
+
+.section-about-himaose ol li {
+  counter-increment: progja-counter;
+  border: 2px solid var(--color-yellow-dark);
+  border-radius: 12px;
+  background-color: #f0f4ff;
+  padding: 20px 20px 20px 75px;
+  margin-bottom: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 60px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  cursor: default;
+  opacity: 0;
+}
+
+.section-about-himaose ol li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(81, 130, 205, 0.15);
+}
+
+/* Kotak Nomor Biru (Badge) */
+.section-about-himaose ol li::before {
+  content: counter(progja-counter);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-dark),
+    var(--color-blue-light)
+  );
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(81, 130, 205, 0.3);
+  transition: all 0.3s ease;
+}
+
+
+.section-about-himaose ol li:hover::before {
+  background: linear-gradient(
+    135deg,
+    var(--color-yellow-dark),
+    var(--color-yellow-light)
+  );
+  transform: translateY(-50%) scale(1.1);
+}
+/* =========================
+    SCROLL REVEAL (CSS-only)
+========================= */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+        RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .profile-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .profile-hero h2 {
+    font-size: 1.1rem;
+  }
+
+  .section-about-himaose {
+    max-width: 100%;
+    padding: 40px 20px;
+    margin: 50px 15px;
+  }
+
+  .section-about-himaose h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-about-himaose p {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-hero {
+    height: 40vh;
+  }
+
+  .profile-hero h1 {
+    font-size: 2rem;
+  }
+
+  .profile-hero h2 {
+    font-size: 0.9rem;
+  }
+
+  .section-about-himaose {
+    padding: 30px 15px;
+    margin: 40px 15px;
+    border-radius: 15px;
+  }
+
+  .section-about-himaose h2 {
+    font-size: 1.2rem;
+  }
+
+  .section-about-himaose p {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+
+/* =========================
+           SIMPLE HOVER CARD (optional nanti)
+        ========================= */
+.hover-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+           SECTION PLAIN - Tanpa Border Biru
+        ========================= */
+.section-plain {
+  background: transparent !important;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 30px 50px;
+  text-align: left !important;
+}
+
+.section-plain::before {
+  display: none !important;
+}
+
+.section-plain:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.section-plain h2 {
+  text-align: left !important;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: var(--color-blue-dark);
+}
+
+.section-plain ol {
+  text-align: left !important;
+}
+
+.section-plain ol li {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+/* Section Secretary - Light Blue Background */
+.section-sekretaris {
+  background-color: #f0f8ff !important;
+}
+
+/* Section Bendahara - White Background */
+.section-bendahara {
+  background-color: #ffffff !important;
+}
+
+/* =========================
+           DAFTAR PROGRAM KERJA - List Styling (mirip vm-content di profil.css)
+        ========================= */
+.section-about-himaose ol {
+  list-style: none;
+  counter-reset: progja-counter;
+  padding: 0;
+  margin: 0;
+}
+
+.section-about-himaose ol li {
+  counter-increment: progja-counter;
+  border: 2px solid #f3d64e;
+  border-radius: 10px;
+  background-color: #deb9b9;
+  background-image: linear-gradient(135deg, var(--color-blue-pale) 0%);
+  background-blend-mode: overlay;
+  padding: 20px 20px 20px 70px;
+  margin-bottom: 15px;
+  opacity: 0;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.section-about-himaose ol li:hover {
+  box-shadow: 0 10px 25px rgba(81, 130, 205, 0.3);
+}
+
+/* Numbered badge styling */
+.section-about-himaose ol li::before {
+  content: counter(progja-counter);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-dark),
+    var(--color-blue-light)
+  );
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.section-about-himaose ol li:hover::before {
+  background: linear-gradient(
+    135deg,
+    var(--color-yellow-dark),
+    var(--color-yellow-light)
+  );
+}
+
+/* Animation for list items */
+.section-about-himaose.visible ol li {
+  animation: slideInFromLeft 0.6s ease-out forwards;
+}
+
+.section-about-himaose.visible ol li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.section-about-himaose.visible ol li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.section-about-himaose.visible ol li:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.section-about-himaose.visible ol li:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+.section-about-himaose.visible ol li:nth-child(5) {
+  animation-delay: 0.9s;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive for program kerja list */
+@media (max-width: 768px) {
+  .section-about-himaose ol li {
+    padding: 15px 15px 15px 50px;
+    min-height: auto;
+    opacity: 1;
+    animation: none !important;
+    font-size: 0.9rem;
+  }
+
+  .section-about-himaose ol li::before {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-about-himaose ol li {
+    padding: 12px 12px 12px 45px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    opacity: 1;
+    animation: none !important;
+  }
+
+  .section-about-himaose ol li::before {
+    width: 25px;
+    height: 25px;
+    font-size: 0.7rem;
+    left: 8px;
+  }
+}

@@ -1,0 +1,36 @@
+<div class="mi">
+    <!-- HERO -->
+    <main class="profile-hero" role="main">
+        <h1>Ketua & Wakil</h1>
+        <p>Kabinet Resonansi Asa 2026</p>
+    </main>
+
+    <!-- TENTANG MI  -->
+    <section class="section-about-himaose section-MI scroll-reveal">
+        <h2>Tentang Ketua dan Wakil</h2>
+        <p>
+            Ketua organisasi berfungsi sebagai pemimpin tertinggi yang menetapkan kebijakan, mengoordinasikan program,
+            dan bertanggung jawab penuh atas jalannya organisasi. Wakil ketua berperan membantu ketua, mewakili saat
+            berhalangan, serta melakukan pengawasan internal untuk memastikan program kerja berjalan sesuai visi.
+        </p>
+    </section>
+
+
+    <!-- SCROLL REVEAL INLINE -->
+    <script>
+        // scroll reveal tanpa file JS eksternal
+        window.addEventListener("scroll", function () {
+            const reveals = document.querySelectorAll(".scroll-reveal");
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 100) {
+                    el.classList.add("visible");
+                }
+            });
+        });
+
+        // trigger on load juga
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</div>

@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>HIMAOSE - UNDIP</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIMA OSE - UNDIP</title>
 
     <!-- Fonts -->
     <link
@@ -15,133 +15,252 @@
     <link rel="icon" type="image/png" href="assets/images/logo/favicon.ico" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/navbar.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/profil.css" />
+    <link rel="stylesheet" href="./assets/css/kontak.css" />
+    <link rel="stylesheet" href="./assets/css/bidang.css" />
+    <link rel="stylesheet" href="./assets/css/sekretaris.css" />
+    <link rel="stylesheet" href="./assets/css/bendahara.css" />
+    <link rel="stylesheet" href="./assets/css/dagri.css" />
+    <link rel="stylesheet" href="./assets/css/psdm.css" />
+    <link rel="stylesheet" href="./assets/css/dimas.css" />
+    <link rel="stylesheet" href="./assets/css/humas.css" />
+    <link rel="stylesheet" href="./assets/css/ekotif.css" />
+    <link rel="stylesheet" href="./assets/css/kesma.css" />
+    <link rel="stylesheet" href="./assets/css/seniora.css" />
+    <link rel="stylesheet" href="./assets/css/mi.css" />
+    <link rel="stylesheet" href="./assets/css/ilbang.css" />
+    <link rel="stylesheet" href="./assets/css/ketua.css" />
 
     <!-- Feather -->
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
-    <!-- NAVBAR -->
-    <div id="navbar"></div>
-
-    <!-- VIDEO STAGE -->
-    <div class="stage" aria-hidden="true">
-      <img
-        src="assets/images/logo/background1.jpg"
-        id="bgImage"
-        alt="Background"
-      />
-      <div class="overlay"></div>
-    </div>
-
-    <!-- HERO -->
-    <main class="hero" role="main">
-      <h2>HIMAOSE 2026</h2>
-      <h1>Kabinet Resonasi Asa</h1>
-      <h4>“Satukan Resonansi, Wujudkan Asa”</h4>
-      <a href="recruitment.html" target="_blank" class="hero-cta">
-        OPEN RECRUITMENT
-        <i data-feather="arrow-right"></i>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <a href="/" class="logo" aria-label="Kembali ke beranda">
+        <img
+          src="assets/images/logo/logokabinetstock.png"
+          alt="Logo HIMAOSE"
+          class="logo-image"
+        />
+        <span class="logo-text">HIMAOSE</span>
       </a>
-    </main>
 
-    <!-- ABOUT ORGANIZATION -->
-    <section class="about fade-section" id="about">
-      <div class="about-content">
-        <div class="about-logo">
-          <img
-            src="./assets/images/logo/logokabinetbottom.png"
-            alt="logo-himpunan"
-          />
+      <div class="nav">
+        <a href="/" id="home" class="nav-menu selected" data-navigo>Beranda</a>
+        <a href="profil" id="profil" class="nav-menu" data-navigo
+          >Tentang Kami</a
+        >
+        <a href="bidang" id="bidang" class="nav-menu" data-navigo>Bidang</a>
+        <a
+          href="beasiswa-lomba"
+          id="beasiswa-lomba"
+          class="nav-menu"
+          data-navigo
+          >Beasiswa & Lomba</a
+        >
+        <a href="kontak" id="kontak" class="nav-menu" data-navigo>Kontak</a>
+      </div>
+
+      <div class="controls">
+        <button class="btn-outline">Open Recruitment</button>
+      </div>
+
+      <a id="hamburger-menu"><i data-feather="menu"></i></a>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Content Start -->
+    <div id="content"></div>
+    <!-- Content End -->
+
+    <!-- Footer Start -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo-mark">
+            <img src="./assets/images/logo/logo.png" alt="logo himpunan" />
+          </div>
+          <div class="footer-brand-text">
+            <p>
+              Himpunan Mahasiswa Oseanografi Universitas Diponegoro – Kabinet
+              Resonansi Asa
+            </p>
+          </div>
         </div>
-        <div class="about-text">
-          <h1>Tentang Kami</h1>
-          <p>
-            Himpunan Mahasiswa Oseanografi (HIMAOSE) adalah organisasi mahasiswa
-            tingkat program studi di Universitas Diponegoro yang bersifat
-            otonom. HIMAOSE menjadi wadah aspirasi, pengembangan keilmuan, serta
-            pembinaan karakter mahasiswa Oseanografi dalam bidang akademik dan
-            non-akademik. Berdiri pada 4 Maret 2017, HIMAOSE terus berkembang
-            sebagai tempat belajar dan bertumbuh bagi mahasiswa.
-          </p>
-          <a href="profil.html" class="about-link"
-            >Selengkapnya <i data-feather="arrow-right"></i
-          ></a>
+
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3 class="footer-title">Menu</h3>
+            <ul class="footer-nav">
+              <li>
+                <a href="index.html" id="home" class="nav-menu selected"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a href="profil.html" id="profil" class="nav-menu"
+                  >Tentang Kami</a
+                >
+              </li>
+              <li><a href="#">Program Kerja</a></li>
+              <li><a href="#">Beasiswa & Lomba</a></li>
+              <li>
+                <a href="kontak.html" id="kontak" class="nav-menu">Kontak</a>
+              </li>
+              <li><a href="#">Recruitment</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="footer-title">Kontak</h3>
+            <ul class="footer-contact">
+              <li>
+                <span class="contact-icon">📍</span>
+                <span class="contact-text">
+                  Gedung Prof. Ir. Eko Budihardjo, M.Sc., Fakultas Perikanan dan
+                  Ilmu Kelautan, Jl. Prof. Soedarto, SH, Tembalang, Semarang
+                  50275
+                </span>
+              </li>
+              <li>
+                <span class="contact-icon">✉️</span>
+                <a href="mailto:hms@ft.undip.ac.id" class="contact-text"
+                  >himaose@fpik.undip.ac.id</a
+                >
+              </li>
+              <li>
+                <span class="contact-icon">☎️</span>
+                <span class="contact-text">—</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="footer-title">Social Media</h3>
+            <div class="footer-social">
+              <a
+                href="https://www.instagram.com/undip.himaose"
+                target="_blank"
+                aria-label="Instagram"
+                class="social-button"
+                >IG</a
+              >
+              <a
+                href="https://www.tiktok.com/@himaose.undip"
+                target="_blank"
+                aria-label="TikTok"
+                class="social-button"
+                >TT</a
+              >
+            </div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- COUNTER SECTION
-    <section class="counter fade-section" aria-label="Statistik HIMAOSE">
-      <div class="counter-inner">
-        <div class="counter-item">
-          <span class="counter-number" data-target="2">0</span>
-          <span class="counter-label">UNIT</span>
-        </div>
-        <div class="counter-item">
-          <span class="counter-number" data-target="8">0</span>
-          <span class="counter-label">BIDANG</span>
-        </div>
-        <div class="counter-item">
-          <span class="counter-number" data-target="4">0</span>
-          <span class="counter-label">BIRO</span>
-        </div>
-        <div class="counter-item">
-          <span class="counter-number" data-target="2">0</span>
-          <span class="counter-label">KLUB</span>
-        </div>
+      <div class="footer-bottom">
+        <p>© 2026 HIMAOSE UNDIP – Kabinet Resonasi Asa. All rights reserved.</p>
       </div>
-    </section> -->
+    </footer>
 
-    <!-- SOCIAL -->
-    <section class="social fade-section" aria-label="Social media HIMAOSE">
-      <div class="social-inner">
-        <p class="social-title">Follow us!</p>
-        <div class="social-actions">
-          <a
-            class="social-btn social-instagram"
-            href="https://www.instagram.com/undip.himaose"
-            target="_blank"
-            rel="noopener"
-          >
-            <i data-feather="instagram"></i>
-            Instagram
-          </a>
-          <a
-            class="social-btn social-tiktok"
-            href="https://www.tiktok.com/@himaose.undip"
-            target="_blank"
-            rel="noopener"
-          >
-            <svg
-              class="social-icon"
-              viewBox="0 0 48 48"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                fill="currentColor"
-                d="M34.2 7.7c1.8 2.1 4.2 3.5 7 3.8v7.2c-3.4.1-6.6-1-9.2-3v14.9c0 8-6.5 14.4-14.4 14.4S3.2 38.6 3.2 30.6 9.6 16.2 17.6 16.2c.8 0 1.7.1 2.5.2v7.7c-.8-.3-1.6-.5-2.5-.5-3.7 0-6.8 3-6.8 6.8s3 6.8 6.8 6.8 6.8-3 6.8-6.8V3h8.8c.2 1.7.8 3.3 1.8 4.7Z"
-              />
-            </svg>
-            TikTok
-          </a>
-        </div>
-      </div>
-    </section>
+    <!-- Footer End -->
 
-    <!-- FOOTER ROOT  -->
-    <div id="footer-root"></div>
+    <!-- JavaScript -->
+    <script src="./js/navbar.js"></script>
 
-    <!-- FOOTER LOAD -->
-    <script src="js/load-navbar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/navigo"></script>
+    <script src="./js/scroll-animations.js"></script>
+    <script src="./js/profil.js"></script>
+    <script>
+      $(document).ready(function () {
+        // navoigo
+        const router = new Navigo("/", { hash: true });
 
-    <!-- FOOTER LOAD -->
-    <script src="js/load-footer.js"></script>
+        function renderPage(path, menuId, callback = null) {
+          $("#content").load(path, function () {
+            $(window).scrollTop(0);
+            $(".nav-menu").removeClass("selected");
+            $(`#${menuId}`).addClass("selected");
+            if (window.feather) {
+              feather.replace();
+            }
+            initAnimations();
 
-    <!-- Scroll animations -->
-    <script src="js/scroll-animations.js"></script>
+            if (callback) {
+              callback();
+            }
+
+            router.updatePageLinks();
+          });
+        }
+
+        router
+          .on("/", function () {
+            renderPage("./components/pages/home.html", "home");
+          })
+          .on("/profil", function () {
+            renderPage("./components/pages/profil.html", "profil", function () {
+              setTimeout(function () {
+                if (typeof window.showVM === "function") {
+                  const $firstCard = $(".vm-card").first();
+                  window.showVM("visi", $firstCard);
+                }
+              }, 100);
+            });
+          })
+          .on("/bidang", function () {
+            renderPage("./components/pages/bidang.html", "bidang");
+          })
+          .on("/bidang/:nama", function (match) {
+            const namaBidang = match.data.nama; 
+            renderPage(
+              `./components/pages/organogram/${namaBidang}.html`,
+              "bidang",
+            );
+          })
+          .on("/kontak", function () {
+            renderPage("./components/pages/kontak.html", "kontak");
+          })
+          .notFound(() => {
+            router.navigate("/");
+          });
+
+        $(document).on("click", ".btn-selengkapnya", function (e) {
+          e.preventDefault();
+          router.navigate("/bidang");
+        });
+
+        $(document).on("click", ".about-link", function (e) {
+          e.preventDefault();
+          router.navigate("/profil");
+        });
+
+        $(document).on(
+          "click",
+          "#bendahara, #sekretaris, #dagri, #psdm, #dimas, #humas, #ekotif, #kesma, #seniora, #mi, #ilbang, #ketua",
+          function (e) {
+            e.preventDefault();
+            const idBidang = $(this).attr("id");
+
+            router.navigate(`/bidang/${idBidang}`);
+          },
+        );
+
+        if (!window.location.hash || window.location.hash === "") {
+          router.navigate("/");
+        }
+
+        router.notFound(() => {
+          router.navigate("/");
+        });
+
+        // Jalankan Router
+        router.resolve();
+      });
+    </script>
   </body>
 </html>

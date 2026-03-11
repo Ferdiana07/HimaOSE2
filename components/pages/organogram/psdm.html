@@ -1,0 +1,53 @@
+<div class="psdm">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>PSDM</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG PSDM  -->
+  <section class="section-about-himaose section-psdm scroll-reveal">
+    <h2>Tentang Pengembangan Sumber Daya Mahasiswa (PSDM)</h2>
+    <p>
+      Pengembangan Sumberdaya Mahasiswa merupakan bidang yang bertanggung jawab
+      dalam membentuk karakter, mencerdaskan serta mengembangkan potensi diri
+      Mahasiswa. Bidang PSDM juga bertanggung jawab dalam kaderisasi lanjutan
+      bagi mahasiswa baru Kelautan sesuai dengan alur dan ketentuan kaderisasi
+      yang ada.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-psdm scroll-reveal"
+  >
+    <h2>Program Kerja PSDM</h2>
+    <ol>
+      <li>Open Recruitment</li>
+      <li>Pencerdasan Dasar (Pedas)</li>
+      <li>OCEAN (Organizing Capacity Enhancement And Navigation)</li>
+      <li>
+        Latihan Keterampilan Managemen Mahasiswa tingkat Pra-Dasar (LKMMPD)
+      </li>
+      <li>OCEANSHIP (Oceanography Student Internship Program)</li>
+      <li>Musyawarah Besar (Mubes)</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

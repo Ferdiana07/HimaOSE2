@@ -1,0 +1,51 @@
+<div class="kesma">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Kesejahteraan Mahasiswa</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG KESMA  -->
+  <section class="section-about-himaose section-kesma scroll-reveal">
+    <h2>Tentang Kesejahteraan Mahasiswa (KESMA)</h2>
+    <p>
+      Kesma atau kesejahteraan mahasiswa merupakan bidang yang berfungsi
+      membantu serta mewadahi aspirasi untuk kesejahteraan mahasiswa
+      oseanografi. Bidang ini juga berperan dalam memberikan serta menyalurkan
+      informasi baik akademik maupun non akademik.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-kesma scroll-reveal"
+  >
+    <h2>Program Kerja Kesejahteraan Mahasiswa (KESMA)</h2>
+    <ol>
+      <li>Banding UKT</li>
+      <li>Kesma Care</li>
+      <li>Kesma Corner</li>
+      <li>Kesma Info</li>
+      <li>OMES (Oseanografi Menfess)</li>
+      <li>OSS (Oseanografi Sharing Session)</li>
+      <li>Civitas Akademika</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

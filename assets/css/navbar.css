@@ -12,6 +12,8 @@ nav {
     background-color 0.3s ease,
     box-shadow 0.3s ease,
     color 0.3s ease;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .navbar .logo {
   display: flex;
@@ -44,21 +46,22 @@ nav {
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   font-weight: 500;
+  transition: 0.2s ease;
 }
 .navbar .nav a:hover {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.1);
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
 }
-.navbar .nav a::after {
-  content: "";
-  display: block;
-  padding-bottom: 0.3rem;
-  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.85);
-  border-radius: 30%;
-  transform: scaleX(0);
-  transition: 0.2s;
-}
-.navbar .nav a:hover::after {
-  transform: scaleX(1);
+.nav .nav-menu.selected {
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  background-color: rgba(250, 204, 21, 0.15);
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.1);
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
 }
 .navbar.scrolled {
   background-color: #ffff !important;
@@ -69,10 +72,17 @@ nav {
   color: black;
 }
 .navbar.scrolled .nav a:hover {
-  color: rgba(0, 0, 0, 0.85);
+  color: #4f46e5;
+  background: #eef2ff;
 }
 .navbar.scrolled .nav a::after {
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.85);
+}
+.navbar.scrolled .nav .nav-menu.selected {
+  color: #ffffff;
+  background: #4f46e5;
+  border-color: #4f46e5;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
 }
 .controls {
   display: flex;
@@ -113,10 +123,9 @@ nav {
 
 /* Tablet */
 @media (max-width: 758px) {
-  nav {
-    padding: 18px 24px; /* kecilkan padding atas/bawah di tablet */
+  .navbar {
+    padding: 18px 24px;
   }
-
   #hamburger-menu {
     display: inline-block;
     color: white;
@@ -165,15 +174,25 @@ nav {
   .navbar .nav a {
     display: block;
     width: 100%;
-    padding: 1rem 5rem;
+    padding: 1rem 2.7rem;
+    border-radius: 0rem;
     color: #ffff;
     text-decoration: none;
     font-size: 1.5rem;
     transition: 0.2s ease;
   }
-  .navbar .nav a:hover {
+  .nav .nav-menu.selected {
+    border-radius: 0rem;
+    padding: 1rem 2.7rem;
     background-color: rgb(255, 251, 251);
     color: black;
+    border-color: rgb(255, 251, 251);
+  }
+  .navbar .nav a:hover {
+    border-radius: 0rem;
+    background-color: rgb(255, 251, 251);
+    color: black;
+    padding: 1rem 2.7rem;
   }
   .navbar .nav a::after {
     border-bottom: none;
@@ -190,6 +209,11 @@ nav {
   }
   .navbar.scrolled .nav a::after {
     border-bottom: none;
+  }
+  .navbar.scrolled .nav .nav-menu.selected {
+    background-color: black;
+    color: rgb(255, 251, 251);
+    border-color: black;
   }
   .controls {
     display: none;

@@ -1,0 +1,47 @@
+<div class="ilbang">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Ilmu dan Pengembangan</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG Libang  -->
+  <section class="section-about-himaose section-libang scroll-reveal">
+    <h2>Tentang Ilmu dan Pengembangan (Ilbang)</h2>
+    <p>
+      Ilmu dan pengembangan merupakan bidang yang bergerak di bidang riset
+      mahasiswa oseanografi. Bidang ini berfungsi untuk mengembangkan minat
+      riset mahasiswa oseanografi.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-libang scroll-reveal"
+  >
+    <h2>Program Kerja Ilmu dan Pengembangan (Ilbang)</h2>
+    <ol>
+      <li>Informasi tentang Riset (Interest)</li>
+      <li>Oceanopedia</li>
+      <li>School of Marine Research (SOMR)</li>
+      <li>Osaka</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

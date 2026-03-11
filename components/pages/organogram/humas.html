@@ -1,0 +1,46 @@
+<div class="humas">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Hubungan Masyarakat</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG HUMAS  -->
+  <section class="section-about-himaose section-humas scroll-reveal">
+    <h2>Tentang Hubungan Masyarakat (HUMAS)</h2>
+    <p>
+      Humas atau hubungan masyarakat merupakan bidang yang menjadi narahubung
+      antara himpunan dengan pihak eksternal sekaligus menjadi perwajahan dari
+      HIMAOSE untuk menciptakan citra positif sebagai himpunan. Bidang humas
+      menjalankan fungsi komunikasi dan kerjasama dengan pihak eksternal.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-humas scroll-reveal"
+  >
+    <h2>Program Kerja Hubungan Masyarakat (HUMAS)</h2>
+    <ol>
+      <li>Company Visit</li>
+      <li>Roadshow</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

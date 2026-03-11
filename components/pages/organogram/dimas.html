@@ -1,0 +1,48 @@
+<div class="dimas">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Pengabdian Masyarakat</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG DIMAS  -->
+  <section class="section-about-himaose section-dimas scroll-reveal">
+    <h2>Tentang Pengabdian Masyarakat (DIMAS)</h2>
+    <p>
+      Pengabdian masyarakat merupakan bidang yang berfokus pada pelaksanaan
+      kegiatan sebagai bentuk pengabdian HIMAOSE kepada masyarakat. Dimas
+      bertujuan untuk melaksanakan tri dharma perguruan tinggi.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-dimas scroll-reveal"
+  >
+    <h2>Program Kerja Pengabdian Masyarakat (DIMAS)</h2>
+    <ol>
+      <li>Oseanografi Love (Oslo)</li>
+      <li>Oceanography Care (Oscar)</li>
+      <li>Gerakan Edukasi Pesisir Pantai (Gesit)</li>
+      <li>Oceanography Coastal Service (Oasis)</li>
+      <li>Edukasi Kelautan (Edukel)</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>

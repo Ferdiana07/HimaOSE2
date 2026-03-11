@@ -1,0 +1,187 @@
+/* Styling Khusus Halaman Proker */
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-yellow-light: #f3d64e;
+  --color-yellow-dark: #fcb50f;
+  --color-blue-dark: #5182cd;
+  --color-blue-light: #54c4fc;
+  --color-blue-pale: #88d8ff;
+}
+
+.proker {
+  color: var(--color-black);
+}
+
+/* Header Section */
+.proker .proker-header {
+  background-color: var(--color-black);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  text-align: center;
+  padding: 100px 10px;
+  opacity: 0.9;
+}
+
+.proker .proker-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--color-yellow-light);
+}
+
+/* Content Section */
+.proker-content {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 5rem;
+  background: #f8fdff;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  gap: 2rem;
+}
+
+.card-content {
+  background: linear-gradient(
+    135deg,
+    rgba(180, 220, 255, 0.6),
+    rgba(200, 240, 255, 0.3)
+  );
+  border: 1px solid
+    linear-gradient(135deg, rgba(180, 220, 255, 0.6), rgba(200, 240, 255, 0.3));
+  border-radius: 15px;
+  padding: 20px;
+  width: 22.5%;
+  height: 220px;
+  transition: 0.2s ease;
+}
+
+.card-content:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(180, 220, 255, 0.9),
+    rgba(200, 240, 255, 0.65)
+  );
+  border-color: rgba(100, 180, 255, 0.7);
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 32px rgba(100, 160, 255, 0.25),
+    0 2px 8px rgba(100, 180, 255, 0.15);
+}
+
+.card-content > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #275fb3;
+  text-align: center;
+  margin-top: 0.7rem;
+}
+
+.card-content > a > h4 {
+  color: var(--color-black);
+  font-size: 0.95rem;
+  margin: 1.8rem 0.1rem 0.1rem 0rem;
+  border-bottom: 3px solid var(--color-blue-dark);
+}
+
+.card-content i,
+.card-content svg {
+  width: auto;
+  height: 33px !important;
+  stroke-width: 2;
+}
+
+.card-content > a > p {
+  color: var(--color-black);
+  font-size: small;
+  margin: 0.5rem 0rem;
+  text-align: center;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =========================
+           RESPONSIVE
+   ========================= */
+
+/* Tablet & Laptop Kecil (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .card-wrapper {
+    width: 100%;
+    gap: 1.5rem;
+  }
+
+  .card-content {
+    width: 45%;
+    height: auto;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-content > a {
+    font-size: 1.2rem;
+  }
+}
+
+/* HP / Mobile L (max-width: 768px) */
+@media (max-width: 768px) {
+  .proker .proker-header {
+    padding: 80px 20px;
+  }
+
+  .proker .proker-header h1 {
+    font-size: 2rem;
+  }
+  
+  .proker-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .card-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .card-content {
+    width: 45%;
+    min-height: 120px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .card-content > a > p {
+    display: none;
+  }
+
+  .card-content > a {
+    font-size: 1rem;
+  }
+}
+
+/* HP Kecil (max-width: 480px) */
+@media (max-width: 480px) {
+  .proker .proker-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-content i,
+  .card-content svg {
+    height: 28px !important; /* Perkecil icon sedikit */
+  }
+}

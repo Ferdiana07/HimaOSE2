@@ -1,0 +1,46 @@
+<div class="dagri">
+  <!-- HERO -->
+  <main class="profile-hero" role="main">
+    <h1>Dalam Negeri</h1>
+    <p>Kabinet Resonansi Asa 2026</p>
+  </main>
+
+  <!-- TENTANG DAGRI  -->
+  <section class="section-about-himaose section-dagri scroll-reveal">
+    <h2>Tentang Dalam Negeri (DAGRI)</h2>
+    <p>
+      Dagri atau dalam negri merupakan suatu bidang yang mengurus dan
+      memfasilitasi segala hal terkait internal kelautan.
+    </p>
+  </section>
+
+  <section
+    class="section-about-himaose section-plain section-dagri scroll-reveal"
+  >
+    <h2>Program Kerja Dalam Negeri (DAGRI)</h2>
+    <ol>
+      <li>Aniversary Night Of Marine (ATOM)</li>
+      <li>Apresiasi Wisuda</li>
+      <li>Civitas Akademika</li>
+      <li>Pengenalan Departemen</li>
+    </ol>
+  </section>
+
+  <!-- SCROLL REVEAL INLINE -->
+  <script>
+    // scroll reveal tanpa file JS eksternal
+    window.addEventListener("scroll", function () {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("visible");
+        }
+      });
+    });
+
+    // trigger on load juga
+    window.dispatchEvent(new Event("scroll"));
+  </script>
+</div>
