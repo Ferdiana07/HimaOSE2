@@ -14,7 +14,9 @@ document.querySelector("#hamburger-menu").onclick = () => {
     if (!existingLink) {
       const newNav = document.createElement("a");
       newNav.textContent = "Open Recruitment";
-      newNav.href = "#";
+      newNav.href = "#/oprec";
+      newNav.id = "oprec";
+      newNav.setAttribute('data-navigo', "");
       newNav.classList.add("extra-link");
       navbarNav.appendChild(newNav);
     }

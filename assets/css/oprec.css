@@ -1,0 +1,141 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-yellow-light: #f3d64e;
+  --color-yellow-dark: #fcb50f;
+  --color-blue-dark: #5182cd;
+  --color-blue-light: #54c4fc;
+  --color-blue-pale: #88d8ff;
+}
+
+.oprec {
+  color: var(--color-black);
+}
+
+/* Header Section */
+.oprec .oprec-header {
+  background-color: var(--color-black);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  text-align: center;
+  padding: 100px 10px;
+  opacity: 0.9;
+}
+
+.oprec .oprec-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--color-yellow-light);
+}
+
+/* Main */
+.container-oprec {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 3rem auto;
+  width: 80%;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.box-oprec {
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-blue-light);
+  border-radius: 10px;
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  width: 35%;
+  cursor: pointer;
+
+  border-top: 4px solid var(--color-blue-light);
+}
+
+.deadline-box {
+  padding: 5px 10px;
+  background-color: var(--color-yellow-light);
+  font-size: small;
+  font-weight: 600;
+  border: 1px solid var(--color-yellow-light);
+  border-radius: 30px;
+  color: #333;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.box-oprec > h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+.box-oprec > p {
+  font-size: smaller;
+  text-align: justify;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.box-oprec > a {
+  border: 1px solid var(--color-blue-dark);
+  background: #4CAEF5;
+  padding: 8px 20px;
+  border-radius: 10px;
+  color: var(--color-white);
+  font-size: smaller;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.box-oprec > a:hover {
+  background:  #2B9EE8;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  background: #f3f3f3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  border-radius: 30px;
+  align-items: center;
+  padding: 2rem;
+}
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Untuk Tablet (Layar di bawah 1024px) */
+@media (max-width: 1024px) {
+  .container-oprec {
+    width: 90%;
+    gap: 2rem;
+  }
+
+  .box-oprec {
+    width: 45%;
+  }
+}
+
+/* Untuk HP (Layar di bawah 768px) */
+@media (max-width: 768px) {
+  .container-oprec {
+    width: 95%;
+    margin: 2rem auto;
+    gap: 1.5rem;
+  }
+
+  .box-oprec {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .oprec .oprec-header h1 {
+    font-size: 2rem;
+  }
+}

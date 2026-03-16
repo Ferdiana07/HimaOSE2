@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="./assets/css/mi.css" />
     <link rel="stylesheet" href="./assets/css/ilbang.css" />
     <link rel="stylesheet" href="./assets/css/ketua.css" />
+    <link rel="stylesheet" href="./assets/css/oprec.css" />
+    <link rel="stylesheet" href="./assets/css/beasiswa-lomba.css" />
 
     <!-- Feather -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -51,22 +53,24 @@
 
       <div class="nav">
         <a href="/" id="home" class="nav-menu selected" data-navigo>Beranda</a>
-        <a href="profil" id="profil" class="nav-menu" data-navigo
+        <a href="/profil" id="profil" class="nav-menu" data-navigo
           >Tentang Kami</a
         >
-        <a href="bidang" id="bidang" class="nav-menu" data-navigo>Bidang</a>
+        <a href="/bidang" id="bidang" class="nav-menu" data-navigo>Bidang</a>
         <a
-          href="beasiswa-lomba"
+          href="/beasiswa-lomba"
           id="beasiswa-lomba"
           class="nav-menu"
           data-navigo
           >Beasiswa & Lomba</a
         >
-        <a href="kontak" id="kontak" class="nav-menu" data-navigo>Kontak</a>
+        <a href="/kontak" id="kontak" class="nav-menu" data-navigo>Kontak</a>
       </div>
 
       <div class="controls">
-        <button class="btn-outline">Open Recruitment</button>
+        <button class="btn-outline nav-menu" id="oprec" data-navigo>
+          Open Recruitment
+        </button>
       </div>
 
       <a id="hamburger-menu"><i data-feather="menu"></i></a>
@@ -173,6 +177,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/navigo"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.min.js"></script>
     <script src="./js/scroll-animations.js"></script>
     <script src="./js/profil.js"></script>
     <script>
@@ -216,7 +221,7 @@
             renderPage("./components/pages/bidang.html", "bidang");
           })
           .on("/bidang/:nama", function (match) {
-            const namaBidang = match.data.nama; 
+            const namaBidang = match.data.nama;
             renderPage(
               `./components/pages/organogram/${namaBidang}.html`,
               "bidang",
@@ -224,6 +229,210 @@
           })
           .on("/kontak", function () {
             renderPage("./components/pages/kontak.html", "kontak");
+          })
+          .on("/beasiswa-lomba", function () {
+            renderPage(
+              "./components/pages/beasiswa-lomba.html",
+              "beasiswa-lomba",
+              async function () {
+                console.log("Halaman Beasiswa render data....");
+                const containerBeasiswa =
+                  document.getElementById("list-beasiswa");
+
+                const containerLomba = document.getElementById("list-lomba");
+
+                function formatTanggal(tanggal) {
+                  return new Date(tanggal).toLocaleDateString("id-ID", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  });
+                }
+
+                function splitSyarat(persyaratan) {
+                  return persyaratan.split(",").map((item) => item.trim());
+                }
+
+                function renderSyarat(listSyarat) {
+                  return listSyarat
+                    .map(
+                      (item) =>
+                        `<div class="item-persyaratan">
+                      <div class="icon">✓</div>
+                      <span>${item}</span>
+                    </div>`,
+                    )
+                    .join("");
+                }
+
+                try {
+                  const responseBeasiswa = await axios.get(
+                    "http://127.0.0.1:3000/v1/beasiswa/all",
+                  );
+
+                  const responseLomba = await axios.get(
+                    "http://127.0.0.1:3000/v1/lomba/all",
+                  );
+
+                  const beasiswaData = responseBeasiswa.data.data;
+                  const LombaData = responseLomba.data.data;
+
+                  if (containerBeasiswa && beasiswaData.length > 0) {
+                    containerBeasiswa.innerHTML = beasiswaData.map(
+                      (item) =>
+                        `<div class="box-beasiswa">
+                        <div class="date-box">
+                          <span id="open">● Buka: ${formatTanggal(item.tgl_buka)}</span>
+                          <span id="close">● Tutup: ${formatTanggal(item.tgl_tutup)}</span>
+                        </div>
+
+                        <h3 class="title-box">${item.nama_beasiswa}</h3>
+                        <div class="date-section">
+                          <div class="date-status">
+                            <span id="title">BUKA PENDAFTARAN</span>
+                            <span id="date">${formatTanggal(item.tgl_buka)}</span>
+                          </div>
+                          <div class="date-status">
+                            <span id="title">TUTUP PENUTUPAN</span>
+                            <span id="date">${formatTanggal(item.tgl_tutup)}</span>
+                          </div>
+                        </div>
+                        <div class="link">
+                          <a href="${item.link_pendaftaran}" class="box-link" target="_blank">Lihat Selengkpanya →</a>
+                        </div>
+                      </div>`,
+                    );
+                  } else {
+                    containerBeasiswa.innerHTML = `
+                      <div class="not-found">
+                        <i data-feather="info"></i>
+                        <p>Tidak ada beasiswa yang sedang buka pendaftaran nih!</p>
+                        <span>Pantau terus sosial media kami untuk info terbaru.</span>
+                      </div>
+                      `;
+                    if (window.feather) feather.replace();
+                  }
+                } catch {
+                  containerBeasiswa.innerHTML = `
+                      <div class="not-found">
+                        <i data-feather="info"></i>
+                        <p>Tidak dapat mendapatkan data informasi beasiswa yang sedang buka pendaftaran.</p>
+                        <span>Silahkan coba lagi nanti.</span>
+                      </div>
+                      `;
+                  if (window.feather) feather.replace();
+                }
+
+                try {
+                  const responseLomba = await axios.get(
+                    "http://127.0.0.1:3000/v1/lomba/all",
+                  );
+
+                  const lombaData = responseLomba.data.data;
+
+                  if (containerLomba && lombaData.length > 0) {
+                    containerLomba.innerHTML = lombaData.map(
+                      (item) =>
+                        `<div class="box-lomba">
+                          <div class="date-box">
+                            <span id="open">● Buka: ${formatTanggal(item.tgl_buka)}</span>
+                            <span id="close">● Tutup: ${formatTanggal(item.tgl_tutup)}</span>
+                          </div>
+
+                          <h3 class="title-box">${item.nama_lomba}</h3>
+                          <p class="description-lomba">
+                            ${item.deskripsi_lomba}
+                          </p>
+
+                          <hr class="divider" />
+
+                          <div class="persyaratan-lomba">
+                            <span id="title-syarat">PERSYARATAN LOMBA</span>
+                            
+                            <div class="wrapped-syarat">
+                              ${renderSyarat(splitSyarat(item.persyaratan))}
+                            </div>
+                          </div>
+
+                          <div class="link-lomba">
+                            <a href="https://www.instagram.com/undip.himaose" class="box-link-lomba">Daftar Sekarang →</a>
+                          </div>
+                        </div>`,
+                    );
+                  } else {
+                    containerLomba.innerHTML = `
+                      <div class="not-found">
+                        <i data-feather="info"></i>
+                        <p>Tidak ada lomba yang sedang buka pendaftaran nih!</p>
+                        <span>Pantau terus sosial media kami untuk info terbaru.</span>
+                      </div>
+                      `;
+                    if (window.feather) feather.replace();
+                  }
+                } catch {
+                  containerLomba.innerHTML = `
+                      <div class="not-found">
+                        <i data-feather="info"></i>
+                        <p>Tidak dapat mendapatkan data informasi lomba yang sedang buka pendaftaran.</p>
+                        <span>Silahkan coba lagi nanti.</span>
+                      </div>
+                      `;
+                  if (window.feather) feather.replace();
+                }
+              },
+            );
+          })
+          .on("/oprec", function () {
+            renderPage(
+              "./components/pages/oprec.html",
+              "oprec",
+              async function () {
+                console.log("Halaman Oprec siap, memulai render data...");
+                const container = document.getElementById("list-oprec");
+
+                try {
+                  const response = await axios.get(
+                    "http://127.0.0.1:3000/v1/proker/all",
+                  );
+                  const prokerData = response.data.data;
+
+                  if (container && prokerData.length > 0) {
+                    container.innerHTML = prokerData
+                      .map(
+                        (item) => `
+                    <div class="box-oprec">
+                        <div class="deadline-box">
+                            <span>${item.divisi}</span>
+                        </div>
+                        <h2 class="title-box">${item.nama_proker}</h2>
+                        <p class="description-box">${item.deskripsi}</p>
+                        <a href="${item.link_oprec}" class="box-link" target="_blank">Daftar Sekarang →</a>
+                    </div>
+                `,
+                      )
+                      .join("");
+                    console.log("Render Berhasil!");
+                  } else {
+                    container.innerHTML = `
+                      <div class="not-found">
+                        <i data-feather="info"></i>
+                        <p>Tidak ada program kerja yang sedang open recruitment nih!</p>
+                        <span>Pantau terus sosial media kami untuk info terbaru.</span>
+                      </div>
+                      `;
+                    if (window.feather) feather.replace();
+                  }
+                } catch (error) {
+                  container.innerHTML = `
+                    <div class="not-found">
+                      <i data-feather="info"></i>
+                      <p>Tidak dapat mendapatkan data program kerja yang sedang open recruitment.</p>
+                      <span>Silahkan coba lagi nanti.</span>
+                    </div>`;
+                  if (window.feather) feather.replace();
+                }
+              },
+            );
           })
           .notFound(() => {
             router.navigate("/");
@@ -249,6 +458,11 @@
             router.navigate(`/bidang/${idBidang}`);
           },
         );
+
+        $(document).on("click", ".btn-outline", function (e) {
+          e.preventDefault();
+          router.navigate("/oprec");
+        });
 
         if (!window.location.hash || window.location.hash === "") {
           router.navigate("/");

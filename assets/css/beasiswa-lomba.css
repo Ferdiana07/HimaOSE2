@@ -1,0 +1,409 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-yellow-light: #f3d64e;
+  --color-yellow-dark: #fcb50f;
+  --color-blue-dark: #5182cd;
+  --color-blue-light: #54c4fc;
+  --color-blue-pale: #88d8ff;
+}
+
+.beasiswa-lomba {
+  color: var(--color-black);
+}
+
+/* Header Section */
+.beasiswa-lomba .beasiswa-lomba-header {
+  background-color: var(--color-black);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  text-align: center;
+  padding: 100px 10px;
+  opacity: 0.9;
+}
+
+.beasiswa-lomba .beasiswa-lomba-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--color-yellow-light);
+}
+
+/* Beasiswa Section */
+.beasiswa-section {
+  padding-top: 0.1rem;
+  padding-bottom: 1.1rem;
+  background: #f0f8ff !important;
+}
+.beasiswa-section .title-beasiswa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.beasiswa-section .title-beasiswa h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-blue-dark);
+  position: relative;
+  border-bottom: 3px solid var(--color-yellow-light);
+  width: fit-content;
+}
+
+.container-beasiswa {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 80%;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.container-beasiswa > .box-beasiswa {
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  border-top: 4px solid var(--color-blue-light);
+}
+
+.box-beasiswa > .date-box {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.date-box span {
+  font-size: small;
+  border-radius: 20px;
+}
+
+.date-box #open {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 2px 8px;
+}
+
+.date-box #close {
+  background: #fff3e0;
+  color: #e65100;
+  padding: 2px 8px;
+}
+
+.title-box {
+  font-weight: 600;
+}
+
+.date-section {
+  display: flex;
+  flex-direction: row;
+  background: #f0f6ff;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 18px;
+  justify-content: space-between;
+}
+
+.date-section > .date-status {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-status > #title {
+  font-size: 9px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #5b8fb9;
+}
+
+.date-status > #date {
+  font-weight: 500;
+}
+
+.date-status:last-child {
+  border-left: 1px solid #c2deff;
+  padding-left: 35px;
+}
+
+.link {
+  width: 100%;
+  text-align: center;
+  background: #4caef5;
+  padding: 8px 20px;
+  border-radius: 10px;
+  transition: 0.2s ease;
+}
+
+.link .box-link {
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: smaller;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  background: #2b9ee8;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  background: #f3f3f3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  border-radius: 30px;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Lomba Section */
+.lomba-section {
+  padding-bottom: 1rem;
+}
+.lomba-section .title-lomba {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.lomba-section .title-lomba h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-blue-dark);
+  position: relative;
+  border-bottom: 3px solid var(--color-yellow-light);
+  width: fit-content;
+}
+
+.container-lomba {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 90%;
+  gap: 3rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.container-lomba > .box-lomba {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  border-top: 4px solid var(--color-blue-light);
+}
+
+.box-lomba > p {
+  text-align: justify;
+  font-size: smaller;
+  margin: 0rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #cbdbfb;
+  margin-bottom: 14px;
+}
+
+.persyaratan-lomba {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.persyaratan-lomba > #title-syarat {
+  font-size: small;
+  color: #5b8fb9;
+  font-weight: 600;
+}
+
+.persyaratan-lomba > .wrapped-syarat {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.persyaratan-lomba > .wrapped-syarat > .item-persyaratan {
+  background: #f4f9ff;
+  display: flex;
+  gap: 0.5rem;
+  padding: 10px 7px;
+  border-radius: 8px;
+}
+
+.persyaratan-lomba .wrapped-syarat .icon {
+  width: 16px;
+  height: 16px;
+  background: #d6eeff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 9px;
+  color: #1d6fa4;
+  font-weight: 700;
+}
+
+.persyaratan-lomba > .wrapped-syarat > .item-persyaratan > span {
+  font-size: 11px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.link-lomba {
+  margin-top: auto;
+  padding-top: 1.2rem;
+}
+
+.box-link-lomba {
+  display: block;
+  background: #4caef5;
+  padding: 8px 20px;
+  border-radius: 10px;
+  color: var(--color-white);
+  font-size: smaller;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  text-align: center;
+}
+
+.box-link-lomba:hover {
+  background: #2b9ee8;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  background: #f3f3f3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  border-radius: 30px;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* ========================= */
+/* Tablet */
+@media (max-width: 1024px) {
+  .container-beasiswa,
+  .container-lomba {
+    width: 95%;
+    gap: 2rem;
+  }
+
+  .container-lomba > .box-lomba {
+    width: 100%;
+  }
+
+  .container-beasiswa > .box-beasiswa {
+    width: 45%;
+  }
+}
+
+/* ========================= */
+/* Mobile */
+@media (max-width: 768px) {
+  .beasiswa-lomba .beasiswa-lomba-header h1 {
+    font-size: 2rem;
+  }
+
+  .container-beasiswa,
+  .container-lomba {
+    width: 100%;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .container-beasiswa > .box-beasiswa {
+    width: 100%;
+  }
+
+  .container-lomba > .box-lomba {
+    width: 100%;
+  }
+
+  .date-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .date-status:last-child {
+    border-left: none;
+    padding-left: 0;
+  }
+  .date-status:first-child {
+    border-bottom: 1px solid #c2deff;
+    padding-bottom: 10px;
+  }
+
+  .date-box span {
+    font-size: 10px;
+    border-radius: 20px;
+  }
+
+  .not-found {
+    text-align: center;
+  }
+}
+
+/* ========================= */
+/* Small Mobile */
+@media (max-width: 480px) {
+  .beasiswa-lomba-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .title-beasiswa h2,
+  .title-lomba h2 {
+    font-size: 1.5rem;
+  }
+
+  .container-beasiswa,
+  .container-lomba {
+    padding: 0.8rem;
+  }
+
+  .box-lomba,
+  .box-beasiswa {
+    padding: 1.2rem;
+  }
+
+  .box-lomba > p {
+    -webkit-line-clamp: 3;
+  }
+
+  .persyaratan-lomba > .wrapped-syarat {
+    max-height: 160px;
+  }
+}

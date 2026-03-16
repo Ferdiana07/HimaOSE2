@@ -117,6 +117,9 @@ iframe {
 
 /* Responsive Breakpoint */
 @media (max-width: 768px) {
+  .kontak .contact-header h1 {
+    font-size: 2rem;
+  }
   .kontak .container {
     grid-template-columns: 1fr; /* Memaksa satu kolom penuh */
     padding: 15px; /* Kurangi padding agar tidak terlalu sesak */

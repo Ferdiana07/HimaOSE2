@@ -141,10 +141,6 @@
 
 /* HP / Mobile L (max-width: 768px) */
 @media (max-width: 768px) {
-  .proker .proker-header {
-    padding: 80px 20px;
-  }
-
   .proker .proker-header h1 {
     font-size: 2rem;
   }
@@ -176,10 +172,6 @@
 
 /* HP Kecil (max-width: 480px) */
 @media (max-width: 480px) {
-  .proker .proker-header h1 {
-    font-size: 1.5rem;
-  }
-
   .card-content i,
   .card-content svg {
     height: 28px !important; /* Perkecil icon sedikit */
