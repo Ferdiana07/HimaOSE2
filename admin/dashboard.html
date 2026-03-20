@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Admin – HIMAOSE</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <link rel="stylesheet" href="./assets/admin.css" />
+</head>
+<body class="dashboard-page">
+
+  <!-- Navbar Admin -->
+  <nav class="admin-nav">
+    <div class="admin-nav-brand">
+      <img src="../assets/images/logo/logo.png" alt="Logo" />
+      <span>Admin HIMAOSE</span>
+    </div>
+    <div class="admin-nav-right">
+      <span id="admin-email"></span>
+      <a href="../index.html" class="btn-nav" target="_blank">Lihat Web →</a>
+      <button id="btn-logout" class="btn-logout">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Konten Utama -->
+  <main class="admin-main">
+
+    <div class="admin-header">
+      <h1>Kelola Data</h1>
+      <p>Tambah, edit, atau hapus data beasiswa, lomba, dan program kerja.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="beasiswa">📚 Beasiswa</button>
+      <button class="tab" data-tab="lomba">🏆 Lomba</button>
+      <button class="tab" data-tab="proker">📋 Program Kerja</button>
+    </div>
+
+    <!-- Konten Tab -->
+    <div id="tab-content">
+      <div class="loading">Memuat data...</div>
+    </div>
+
+  </main>
+
+  <!-- Modal Form -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-title">Tambah Data</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <form id="admin-form"></form>
+      <div class="modal-actions">
+        <button id="btn-save" class="btn-save">Simpan</button>
+        <button class="btn-cancel" onclick="closeModal()">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/admin.js"></script>
+</body>
+</html>
