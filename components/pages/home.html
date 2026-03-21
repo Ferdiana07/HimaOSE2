@@ -1,33 +1,53 @@
 <section class="home">
-  <!-- VIDEO STAGE -->
+
+  <!-- ░░ PARTICLE CANVAS (hero only) ░░ -->
+  <canvas id="hs-canvas" aria-hidden="true" style="
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    pointer-events:none;z-index:1;overflow:hidden;
+  "></canvas>
+
+  <!-- VIDEO STAGE (original) -->
   <div class="stage" aria-hidden="true">
-    <img
-      src="assets/images/logo/background1.jpg"
-      id="bgImage"
-      alt="Background"
-    />
+    <img src="assets/images/logo/background1.jpg" id="bgImage" alt="Background" />
     <div class="overlay"></div>
   </div>
 
-  <!-- HERO -->
+  <!-- ░░ HERO — enhanced ░░ -->
   <main class="hero" role="main">
+
+    <!-- mouse-follow glow -->
+    <div id="hs-hero-glow" aria-hidden="true"></div>
+
+    <!-- floating orbs -->
+    <div class="hs-orb hs-orb-1" aria-hidden="true"></div>
+    <div class="hs-orb hs-orb-2" aria-hidden="true"></div>
+    <div class="hs-orb hs-orb-3" aria-hidden="true"></div>
+
+
+    <!-- original headings — now with shimmer on h1 -->
     <h2>HIMAOSE 2026</h2>
-    <h1>Kabinet Resonansi Asa</h1>
-    <h4>“Satukan Resonansi, Wujudkan Asa”</h4>
-    <a href="/oprec" id="oprec" class="hero-cta" data-navigo>
+    <h1><span class="hs-gold-shimmer">Kabinet Resonansi Asa</span></h1>
+    <h4>"Satukan Resonansi, Wujudkan Asa"</h4>
+
+    <!-- original CTA -->
+    <a href="#/oprec" id="oprec" class="hero-cta" data-navigo>
       OPEN RECRUITMENT
       <i data-feather="arrow-right"></i>
     </a>
+
+    <!-- scroll cue -->
+    <div class="hs-scroll-cue" aria-hidden="true">
+      <div class="hs-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+
   </main>
 
-  <!-- ABOUT ORGANIZATION -->
+  <!-- ABOUT ORGANIZATION (original — untouched) -->
   <section class="about fade-section" id="about">
     <div class="about-content">
       <div class="about-logo">
-        <img
-          src="./assets/images/logo/logokabinetbottom.png"
-          alt="logo-himpunan"
-        />
+        <img src="./assets/images/logo/logokabinetbottom.png" alt="logo-himpunan" />
       </div>
       <div class="about-text">
         <h1>Tentang Kami</h1>
@@ -39,14 +59,14 @@
           Berdiri pada 4 Maret 2017, HIMAOSE terus berkembang sebagai tempat
           belajar dan bertumbuh bagi mahasiswa.
         </p>
-        <a class="about-link" id="profil" href="profil.html"
-          >Selengkapnya <i data-feather="arrow-right"></i
-        ></a>
+        <a class="about-link" id="profil" href="profil.html">
+          Selengkapnya <i data-feather="arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- SOCIAL -->
+  <!-- SOCIAL (original — untouched) -->
   <section class="social fade-section" aria-label="Social media HIMAOSE">
     <div class="social-inner">
       <p class="social-title">Follow us!</p>
@@ -66,14 +86,8 @@
           target="_blank"
           rel="noopener"
         >
-          <svg
-            class="social-icon"
-            viewBox="0 0 48 48"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              fill="currentColor"
+          <svg class="social-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
               d="M34.2 7.7c1.8 2.1 4.2 3.5 7 3.8v7.2c-3.4.1-6.6-1-9.2-3v14.9c0 8-6.5 14.4-14.4 14.4S3.2 38.6 3.2 30.6 9.6 16.2 17.6 16.2c.8 0 1.7.1 2.5.2v7.7c-.8-.3-1.6-.5-2.5-.5-3.7 0-6.8 3-6.8 6.8s3 6.8 6.8 6.8 6.8-3 6.8-6.8V3h8.8c.2 1.7.8 3.3 1.8 4.7Z"
             />
           </svg>
@@ -82,4 +96,290 @@
       </div>
     </div>
   </section>
+
 </section>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO-ONLY STYLES  (tidak menyentuh .about / .social)
+═══════════════════════════════════════════ -->
+<style>
+/* ── Prevent horizontal scroll from hero effects ── */
+.home {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+.hero {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* ── Glow follow cursor ──────────────────────── */
+#hs-hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,123,191,.2) 0%, transparent 65%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  top: 50%; left: 50%;
+  transition: left .12s ease, top .12s ease;
+  z-index: 0;
+}
+
+/* ── Floating orbs ───────────────────────────── */
+.hs-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(72px);
+  animation: hsOrbFloat 12s ease-in-out infinite;
+  z-index: 0;
+}
+.hs-orb-1 {
+  width: 360px; height: 360px;
+  top: -60px; right: -80px;
+  background: radial-gradient(circle, rgba(26,123,191,.24), transparent);
+}
+.hs-orb-2 {
+  width: 260px; height: 260px;
+  bottom: -50px; left: -60px;
+  background: radial-gradient(circle, rgba(243,214,78,.16), transparent);
+  animation-delay: -5s;
+}
+.hs-orb-3 {
+  width: 190px; height: 190px;
+  top: 38%; left: 8%;
+  background: radial-gradient(circle, rgba(0,150,230,.18), transparent);
+  animation-delay: -9s;
+}
+@keyframes hsOrbFloat {
+  0%,100% { transform: translate(0,0)       scale(1);    }
+  33%     { transform: translate(30px,-22px) scale(1.1); }
+  66%     { transform: translate(-18px,26px) scale(.93); }
+}
+
+/* ── Badge ───────────────────────────────────── */
+.hs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  padding: .36rem 1.1rem;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.88);
+  margin-bottom: .8rem;
+  /* stagger: badge first */
+  opacity: 0;
+  animation: hsFadeUp .7s cubic-bezier(.22,1,.36,1) forwards .05s;
+}
+.hs-live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4eff91;
+  box-shadow: 0 0 8px #4eff91;
+  animation: hsDotPulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes hsDotPulse { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+
+/* ── Hero headings — keep existing sizes, add anim ─ */
+.hero h2,
+.hero h1,
+.hero h4,
+.hero-cta {
+  opacity: 0;
+  /* existing heroFadeUp from style.css will override if already defined.
+     We define our own here only for animation; transform/font unchanged. */
+  animation: hsFadeUp .75s cubic-bezier(.22,1,.36,1) forwards;
+}
+.hero h2   { animation-delay: .2s;  }
+.hero h1   { animation-delay: .38s; }
+.hero h4   { animation-delay: .55s; }
+.hero-cta  { animation-delay: .72s; }
+
+@keyframes hsFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Gold shimmer on h1 ──────────────────────── */
+.hs-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #c6ac37 0%, #f3d64e 28%, #ffe98a 50%, #f3d64e 72%, #c6ac37 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hsShimmer 3.5s linear infinite;
+  /* let font-size / weight come from existing .hero h1 */
+}
+@keyframes hsShimmer { to { background-position: 200% center; } }
+
+/* ── hero-cta pulse glow ─────────────────────── */
+.hero-cta {
+  position: relative;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease !important;
+}
+.hero-cta:hover {
+  transform: translateY(-4px) scale(1.06) !important;
+  box-shadow: 0 16px 40px rgba(243,214,78,.5), 0 4px 14px rgba(0,0,0,.22) !important;
+}
+
+/* ── Scroll cue ──────────────────────────────── */
+.hs-scroll-cue {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .45rem;
+  opacity: 0;
+  animation: hsFadeUp .7s cubic-bezier(.22,1,.36,1) forwards 1.3s;
+  pointer-events: none;
+}
+.hs-scroll-line {
+  width: 1px; height: 46px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.55));
+  animation: hsScrollLine 2s ease-in-out infinite;
+}
+@keyframes hsScrollLine {
+  0%   { transform: scaleY(0); transform-origin: top;    opacity: 1; }
+  49%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
+  50%  { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+.hs-scroll-cue > span {
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+}
+
+/* ── Responsive: hero enhancements only ─────── */
+
+/* Tablet ≤ 768px */
+@media (max-width: 768px) {
+  .hs-badge {
+    font-size: .65rem;
+    padding: .32rem .9rem;
+    letter-spacing: .1em;
+    max-width: 90vw;
+    text-align: center;
+    white-space: normal;
+    justify-content: center;
+  }
+  .hs-orb-1 { width: 200px; height: 200px; top: -30px; right: -40px; }
+  .hs-orb-2 { width: 150px; height: 150px; }
+  .hs-orb-3 { display: none; }
+  #hs-hero-glow { width: 320px; height: 320px; }
+  .hs-scroll-cue { bottom: 1rem; }
+}
+
+/* Mobile ≤ 480px */
+@media (max-width: 480px) {
+  .hs-badge {
+    font-size: .6rem;
+    padding: .28rem .75rem;
+    letter-spacing: .08em;
+  }
+  .hs-orb-1 { width: 140px; height: 140px; filter: blur(50px); }
+  .hs-orb-2 { width: 110px; height: 110px; filter: blur(45px); }
+  #hs-hero-glow { width: 220px; height: 220px; }
+  .hs-scroll-cue { display: none; }
+}
+
+/* Very small ≤ 360px */
+@media (max-width: 360px) {
+  .hs-badge { display: none; }
+  .hs-orb-1, .hs-orb-2 { display: none; }
+}
+</style>
+
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS — hero particle canvas + hero glow only
+═══════════════════════════════════════════ -->
+<script>
+(function () {
+
+  /* ── Particle canvas ── */
+  var canvas = document.getElementById('hs-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var pts = [];
+  for (var i = 0; i < 70; i++) pts.push(mkP(true));
+
+  function mkP(rnd) {
+    var bubble = Math.random() > .42;
+    return {
+      bubble: bubble,
+      x:  Math.random() * innerWidth,
+      y:  rnd ? Math.random() * innerHeight : innerHeight + 12,
+      r:  bubble ? 2 + Math.random() * 5.5 : .8 + Math.random() * 2.2,
+      vy: bubble ? .2  + Math.random() * .5  : .06 + Math.random() * .15,
+      dx: (Math.random() - .5) * .32,
+      op: bubble ? .07 + Math.random() * .2  : .12 + Math.random() * .42,
+      ph: Math.random() * Math.PI * 2,
+      tw: Math.random() * Math.PI * 2
+    };
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pts.forEach(function (p) {
+      p.y  -= p.vy;
+      p.x  += Math.sin(t * .0007 + p.ph) * p.dx;
+      p.tw += .025;
+      if (p.y + p.r < -8) Object.assign(p, mkP(false), { x: Math.random() * innerWidth });
+
+      var alpha = p.bubble ? p.op : p.op * (.5 + .5 * Math.sin(p.tw));
+      ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+
+      if (p.bubble) {
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(185,227,243,1)';
+        ctx.lineWidth = 1; ctx.stroke();
+        ctx.beginPath(); ctx.arc(p.x - p.r * .3, p.y - p.r * .3, p.r * .22, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.fill();
+      } else {
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(243,214,78,1)'; ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  /* ── Hero mouse-follow glow ── */
+  var glowEl = document.getElementById('hs-hero-glow');
+  var heroEl = document.querySelector('.hero');
+  if (glowEl && heroEl) {
+    heroEl.addEventListener('mousemove', function (e) {
+      var r = heroEl.getBoundingClientRect();
+      glowEl.style.left = (e.clientX - r.left) + 'px';
+      glowEl.style.top  = (e.clientY - r.top)  + 'px';
+    });
+    heroEl.addEventListener('mouseleave', function () {
+      glowEl.style.left = '50%';
+      glowEl.style.top  = '50%';
+    });
+  }
+
+})();
+</script>

@@ -2,6 +2,23 @@
   --accent: #e53935;
   --muted: rgba(255, 255, 255, 0.85);
 }
+
+/* ═══════════════════════════════════════════════
+   FIX: Prevent horizontal scroll (navbar disappears)
+   Tambahkan ke style.css bagian paling atas
+
+   PENTING: overflow-x:hidden hanya di body, BUKAN di html.
+   Kalau html juga diberi overflow:hidden, window.scrollY
+   akan selalu 0 dan navbar.scrolled tidak pernah aktif.
+═══════════════════════════════════════════════ */
+html {
+  max-width: 100%;
+}
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
