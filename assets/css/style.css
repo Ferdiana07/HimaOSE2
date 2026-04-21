@@ -522,3 +522,29 @@ body {
     line-height: 1.4;
   }
 }
+
+.footer-social {
+  display: flex;
+  gap: 15px; /* Jarak antar tombol */
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: #333333; /* Warna background tombol */
+  color: #ffffff; /* Warna logo */
+  border-radius: 50%; /* Membuat tombol menjadi bulat */
+  text-decoration: none;
+  font-size: 20px; /* Ukuran logo */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efek ketika tombol disorot mouse */
+.social-button:hover {
+  background-color: #007bff; /* Ubah warna saat di-hover */
+  transform: translateY(-3px); /* Efek melayang sedikit */
+  color: #ffffff;
+}

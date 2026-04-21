@@ -90,14 +90,26 @@
   background-color: none;
 }
 
+/* Gaya dasar tombol (Hanya border, tanpa background) */
 .coming-soon-btn {
-  background-color: var(--color-blue-pale);
-  color: var(--color-black);
-  padding: 10px 20px;
-  border-radius: 8px;
-  display: center;
-  margin-top: 15px;
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: transparent; /* Menghilangkan warna background */
+  color: #007bff; /* Warna teks (bisa disesuaikan dengan tema Anda) */
   font-weight: 600;
+  text-decoration: none; /* Menghilangkan garis bawah link */
+  border: 2px solid #007bff; /* Ketebalan dan warna garis tepi */
+  border-radius: 10px; /* Membuat sudut sedikit membulat */
+  transition: all 0.3s ease; /* Membuat efek perubahan warna menjadi halus */
+  cursor: pointer;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Efek saat tombol disorot mouse (Hover) */
+.coming-soon-btn:hover {
+  background-color: #007bff; /* Background terisi warna */
+  color: #ffffff; /* Warna teks berubah menjadi putih agar kontras */
 }
 
 /* Map Container */

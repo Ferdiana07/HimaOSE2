@@ -11,6 +11,7 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/logo/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="./assets/css/style.css" />
@@ -123,6 +124,7 @@
               <span class="contact-icon">☎️</span>
               <span class="contact-text">089649938313 (Oryza)</span>
             </li>
+
           </ul>
         </div>
 
@@ -130,9 +132,17 @@
           <h3 class="footer-title">Social Media</h3>
           <div class="footer-social">
             <a href="https://www.instagram.com/undip.himaose" target="_blank" aria-label="Instagram"
-              class="social-button">IG</a>
-            <a href="https://www.tiktok.com/@himaose.undip" target="_blank" aria-label="TikTok"
-              class="social-button">TT</a>
+              class="social-button">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@himaose.undip" target="_blank" aria-label="TikTok" class="social-button">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" class="social-button">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -271,7 +281,7 @@
                 if (containerBeasiswa && beasiswaData && beasiswaData.length > 0) {
                   containerBeasiswa.innerHTML = beasiswaData
                     .map(
-                        (item) => `<div class="box-beasiswa">
+                      (item) => `<div class="box-beasiswa">
 
                       <!-- GAMBAR -->
                       <img 
@@ -300,7 +310,7 @@
 
                       <div class="link">
                         <a href="${item.link}" class="box-link" target="_blank">
-                          Lihat Selengkapnya →
+                          Informasi Lebih Lanjut →
                         </a>
                       </div>
 
@@ -429,7 +439,7 @@
                         <!-- Link Selengkapnya -->
                         <div class="oprec-link">
                           <a href="${item.link}" class="box-link" target="_blank">
-                            Lihat Selengkapnya → 
+                            Informasi Lebih Lanjut → 
                           </a>
                         </div>
 
