@@ -298,15 +298,4 @@
   }
 }
 
-/* ================= DATE BOX DI LOMBA ================= */
-.box-lomba .date-box {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;       /* memberi jarak dari gambar */
-}
-
-/* Kalau mau lebih aman: pastikan .img-card-wrapper punya margin-bottom */
-.box-lomba .img-card-wrapper {
-  margin-bottom: 12px;    /* jarak gambar ke date-box */
-}
+/* ================= DATE BOX DI L

@@ -202,20 +202,21 @@
         });
       }
 
-      function splitSyarat(persyaratan) {
-        return persyaratan.split(",").map((item) => item.trim());
+      // Helper functions for Lomba
+      function renderSyarat(syaratArray) {
+        if (!syaratArray || syaratArray.length === 0) {
+          return '<p style="color: #888; font-style: italic;">Tidak ada persyaratan tercantum.</p>';
+        }
+        return `<ul class="list-persyaratan">
+          ${syaratArray.map(item => `<li>${item}</li>`).join('')}
+        </ul>`;
       }
 
-      function renderSyarat(listSyarat) {
-        return listSyarat
-          .map(
-            (item) => `<div class="item-persyaratan">
-              <div class="icon">✓</div>
-              <span>${item}</span>
-            </div>`
-          )
-          .join("");
+      function splitSyarat(persyaratan) {
+        return (persyaratan || '').split(",").map((item) => item.trim()).filter(item => item.length > 0);
       }
+
+
 
       // ── Tampilan "tidak ada data" & "error" ─────────────────────────────────
       function htmlKosong(pesan, sub) {
@@ -369,6 +370,11 @@
                         ${item.deskripsi || "Tidak ada deskripsi tersedia."}
                       </p>
 
+                      <div class="persyaratan-section">
+                        <h4 class="persyaratan-title">Persyaratan:</h4>
+                        ${renderSyarat(splitSyarat(item.persyaratan))}
+                      </div>
+
                       <div class="link-lomba">
                         <a href="${item.link}" target="_blank" class="box-link-lomba">
                           Daftar Sekarang →
@@ -435,6 +441,7 @@
                         <p class="description-box">
                           ${item.deskripsi || 'Deskripsi belum tersedia.'}
                         </p>
+                        
 
                         <!-- Link Selengkapnya -->
                         <div class="oprec-link">
