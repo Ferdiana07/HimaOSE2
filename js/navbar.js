@@ -13,7 +13,7 @@ document.querySelector("#hamburger-menu").onclick = () => {
     // Jika menu dibuka dan link belum ada, buat linknya
     if (!existingLink) {
       const newNav = document.createElement("a");
-      newNav.textContent = "Open Recruitment";
+      newNav.textContent = "Programs & Opportunities";
       newNav.href = "#/oprec";
       newNav.id = "oprec";
       newNav.setAttribute('data-navigo', "");
