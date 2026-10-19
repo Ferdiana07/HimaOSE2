@@ -3,14 +3,28 @@ const sb = window.supabase.createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJmcnNndmVveWtkbWN5Y3pia2tvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5OTU1MzgsImV4cCI6MjA4OTU3MTUzOH0.4wqRmCHZjVotig4nOrLTLw0tGpDmysYmOR9H8KLEoz8"
 );
 
-// ── Guard: belum login → tendang ke halaman login ───────────────────────────
-sb.auth.getSession().then(({ data }) => {
-  if (!data.session) {
-    window.location.href = "./index.html";
-  } else {
-    document.getElementById("admin-email").textContent = data.session.user.email;
+// Pemeriksaan di browser ini hanya untuk UX. Otorisasi sebenarnya tetap
+// dilakukan oleh Row Level Security (RLS) di Supabase.
+async function initAdmin() {
+  const { data: sessionData, error: sessionError } = await sb.auth.getSession();
+  const session = sessionData?.session;
+
+  if (sessionError || !session) {
+    window.location.replace("./index.html");
+    return;
   }
-});
+
+  const { data: isAdmin, error: roleError } = await sb.rpc("is_admin");
+
+  if (roleError || isAdmin !== true) {
+    await sb.auth.signOut();
+    window.location.replace("./index.html?error=unauthorized");
+    return;
+  }
+
+  document.getElementById("admin-email").textContent = session.user.email;
+  await renderTab("beasiswa");
+}
 
 // ── Logout ───────────────────────────────────────────────────────────────────
 document.getElementById("btn-logout").addEventListener("click", async () => {
@@ -62,6 +76,28 @@ const CONFIG = {
 };
 
 let activeTab = "beasiswa";
+let currentRows = [];
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>'"]/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "'": "&#39;",
+    '"': "&quot;",
+  })[char]);
+}
+
+function safeImageUrl(value) {
+  if (!value) return "";
+
+  try {
+    const url = new URL(value, window.location.origin);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
+  } catch {
+    return "";
+  }
+}
 
 // ── Render tabel data ────────────────────────────────────────────────────────
 async function renderTab(tabKey) {
@@ -74,9 +110,11 @@ async function renderTab(tabKey) {
   const { data, error } = await sb.from(cfg.table).select("*").order("id");
 
   if (error) {
-    container.innerHTML = `<div class="error-box">❌ Gagal memuat data: ${error.message}</div>`;
+    container.innerHTML = `<div class="error-box">❌ Gagal memuat data: ${escapeHtml(error.message)}</div>`;
     return;
   }
+
+  currentRows = data;
 
   // Cek apakah tabel punya field gambar
   const hasImage = cfg.fields.some(f => f.type === "image");
@@ -108,9 +146,9 @@ async function renderTab(tabKey) {
             ${data.map((row, i) => `
               <tr>
                 <td>${i + 1}</td>
-                <td>${row[cfg.labelKey] || "-"}</td>
+                <td>${escapeHtml(row[cfg.labelKey] || "-")}</td>
                 ${tabKey === "beasiswa" ? `<td>${row.tgl_tutup ? formatTgl(row.tgl_tutup) : "-"}</td>` : ""}
-                ${tabKey === "proker"   ? `<td>${row.divisi || "-"}</td>` : ""}
+                ${tabKey === "proker"   ? `<td>${escapeHtml(row.divisi || "-")}</td>` : ""}
                 ${hasImage ? `
                   <td>
                     ${row.gambar
@@ -118,8 +156,8 @@ async function renderTab(tabKey) {
                       : `<span class="no-img">–</span>`}
                   </td>` : ""}
                 <td>
-                  <button class="btn-edit" onclick='openForm(${JSON.stringify(row).replace(/'/g, "&#39;")})'>✏️ Edit</button>
-                  <button class="btn-del"  onclick="deleteRow(${row.id})">🗑️ Hapus</button>
+                  <button class="btn-edit" onclick="openFormById(${Number(row.id)})">✏️ Edit</button>
+                  <button class="btn-del"  onclick="deleteRow(${Number(row.id)})">🗑️ Hapus</button>
                 </td>
               </tr>
             `).join("")}
@@ -139,6 +177,8 @@ function formatTgl(tgl) {
 
 // ── Render field upload gambar ────────────────────────────────────────────────
 function renderImageField(f, existingUrl) {
+  const safeExistingUrl = safeImageUrl(existingUrl);
+
   return `
     <div class="form-group">
       <label>${f.label}</label>
@@ -150,7 +190,7 @@ function renderImageField(f, existingUrl) {
 
         <!-- Ikon dan teks (tersembunyi saat ada preview) -->
         <div class="upload-placeholder" id="upload-placeholder-${f.key}"
-             style="${existingUrl ? "display:none" : ""}">
+             style="${safeExistingUrl ? "display:none" : ""}">
           <span class="upload-icon">🖼️</span>
           <span class="upload-text">Klik untuk pilih gambar</span>
           <span class="upload-hint">PNG, JPG, WEBP · Maks 2 MB</span>
@@ -158,21 +198,21 @@ function renderImageField(f, existingUrl) {
 
         <!-- Preview gambar -->
         <div class="upload-preview" id="upload-preview-${f.key}"
-             style="${existingUrl ? "" : "display:none"}">
-          <img id="preview-img-${f.key}" src="${existingUrl || ""}" alt="preview" />
+             style="${safeExistingUrl ? "" : "display:none"}">
+          <img id="preview-img-${f.key}" src="${escapeHtml(safeExistingUrl)}" alt="preview" />
         </div>
       </label>
 
       <!-- Tombol hapus gambar -->
       <button type="button" class="btn-remove-img"
               id="btn-remove-${f.key}"
-              style="${existingUrl ? "" : "display:none"}"
+              style="${safeExistingUrl ? "" : "display:none"}"
               onclick="removeImage('${f.key}')">
         ✕ Hapus Gambar
       </button>
 
       <!-- Hidden field simpan URL -->
-      <input type="hidden" name="${f.key}" id="val-${f.key}" value="${existingUrl || ""}" />
+      <input type="hidden" name="${f.key}" id="val-${f.key}" value="${escapeHtml(safeExistingUrl)}" />
     </div>
   `;
 }
@@ -250,9 +290,9 @@ function openForm(row) {
       <div class="form-group">
         <label>${f.label}${f.required ? ' <span class="required">*</span>' : ""}</label>
         ${f.type === "textarea"
-          ? `<textarea name="${f.key}" rows="3" ${f.required ? "required" : ""}>${row ? (row[f.key] || "") : ""}</textarea>`
+          ? `<textarea name="${f.key}" rows="3" ${f.required ? "required" : ""}>${escapeHtml(row ? (row[f.key] || "") : "")}</textarea>`
           : `<input type="${f.type}" name="${f.key}"
-               value="${row ? (row[f.key] || "") : ""}"
+               value="${escapeHtml(row ? (row[f.key] || "") : "")}"
                ${f.required ? "required" : ""} />`
         }
       </div>
@@ -262,6 +302,11 @@ function openForm(row) {
   document.getElementById("btn-save").onclick = saveForm;
   modal.classList.remove("hidden");
   setTimeout(() => form.querySelector("input:not([type=hidden]), textarea")?.focus(), 100);
+}
+
+function openFormById(id) {
+  const row = currentRows.find((item) => Number(item.id) === Number(id));
+  if (row) openForm(row);
 }
 
 function closeModal() {
@@ -347,4 +392,4 @@ document.addEventListener("keydown", (e) => {
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-renderTab("beasiswa");
+initAdmin();

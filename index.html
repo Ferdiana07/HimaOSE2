@@ -202,18 +202,44 @@
         });
       }
 
+      function escapeHtml(value) {
+        return String(value ?? "").replace(/[&<>'"]/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "'": "&#39;",
+          '"': "&quot;",
+        })[char]);
+      }
+
+      function safeUrl(value, fallback = "#") {
+        if (!value) return fallback;
+
+        try {
+          const url = new URL(value, window.location.origin);
+          return url.protocol === "https:" || url.protocol === "http:"
+            ? escapeHtml(url.href)
+            : fallback;
+        } catch {
+          return fallback;
+        }
+      }
+
       // Helper functions for Lomba
+      function splitSyarat(persyaratan) {
+        return (persyaratan || "")
+          .split(",")
+          .map((item) => item.trim())
+          .filter((item) => item.length > 0);
+      }
+
       function renderSyarat(syaratArray) {
         if (!syaratArray || syaratArray.length === 0) {
           return '<p style="color: #888; font-style: italic;">Tidak ada persyaratan tercantum.</p>';
         }
         return `<ul class="list-persyaratan">
-          ${syaratArray.map(item => `<li>${item}</li>`).join('')}
+          ${syaratArray.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
         </ul>`;
-      }
-
-      function splitSyarat(persyaratan) {
-        return (persyaratan || '').split(",").map((item) => item.trim()).filter(item => item.length > 0);
       }
 
       // Helper function untuk render kartu oprec
@@ -221,21 +247,21 @@
         return `<div class="box-oprec">
           <!-- Divisi & Status -->
           <div class="oprec-badge-header">
-            <span class="oprec-divisi">Divisi: ${item.divisi}</span>
-            <span class="oprec-status">Status: ${item.status || 'Belum diumumkan'}</span>
+            <span class="oprec-divisi">Divisi: ${escapeHtml(item.divisi)}</span>
+            <span class="oprec-status">Status: ${escapeHtml(item.status || 'Belum diumumkan')}</span>
           </div>
 
           <!-- Nama Program Kerja -->
-          <h2 class="title-box">${item.nama_proker}</h2>
+          <h2 class="title-box">${escapeHtml(item.nama_proker)}</h2>
 
           <!-- Deskripsi -->
           <p class="description-box">
-            ${item.deskripsi || 'Deskripsi belum tersedia.'}
+            ${escapeHtml(item.deskripsi || 'Deskripsi belum tersedia.')}
           </p>
 
           <!-- Link Selengkapnya -->
           <div class="oprec-link">
-            <a href="${item.link}" class="box-link" target="_blank">
+            <a href="${safeUrl(item.link)}" class="box-link" target="_blank" rel="noopener noreferrer">
               Informasi Lebih Lanjut →
             </a>
           </div>
@@ -312,16 +338,16 @@
 
                       <!-- GAMBAR -->
                       <img 
-                        src="${item.gambar || 'https://via.placeholder.com/400x200?text=No+Image'}" 
-                        alt="${item.nama_bsw}" 
+                        src="${safeUrl(item.gambar, 'https://via.placeholder.com/400x200?text=No+Image')}"
+                        alt="${escapeHtml(item.nama_bsw)}"
                         class="img-card"
                       />
 
-                      <h3 class="title-box">${item.nama_bsw}</h3>
+                      <h3 class="title-box">${escapeHtml(item.nama_bsw)}</h3>
 
                       <!-- DESKRIPSI -->
                       <p class="description-beasiswa">
-                        ${item.deskripsi}
+                        ${escapeHtml(item.deskripsi || "Tidak ada deskripsi tersedia.")}
                       </p>
 
                       <div class="date-section">
@@ -336,7 +362,7 @@
                       </div>
 
                       <div class="link">
-                        <a href="${item.link}" class="box-link" target="_blank">
+                        <a href="${safeUrl(item.link)}" class="box-link" target="_blank" rel="noopener noreferrer">
                           Informasi Lebih Lanjut →
                         </a>
                       </div>
@@ -380,8 +406,8 @@
 
                       <!-- GAMBAR -->
                       <img 
-                        src="${item.gambar || 'https://via.placeholder.com/400x200?text=No+Image'}" 
-                        alt="${item.nama_lomba}" 
+                        src="${safeUrl(item.gambar, 'https://via.placeholder.com/400x200?text=No+Image')}"
+                        alt="${escapeHtml(item.nama_lomba)}"
                         class="img-card"
                       />
 
@@ -390,10 +416,10 @@
                         <span id="close">● Tutup: ${formatTanggal(item.tgl_tutup)}</span>
                       </div>
 
-                      <h3 class="title-box">${item.nama_lomba}</h3>
+                      <h3 class="title-box">${escapeHtml(item.nama_lomba)}</h3>
 
                       <p class="description-lomba">
-                        ${item.deskripsi || "Tidak ada deskripsi tersedia."}
+                        ${escapeHtml(item.deskripsi || "Tidak ada deskripsi tersedia.")}
                       </p>
 
                       <div class="persyaratan-section">
@@ -402,7 +428,7 @@
                       </div>
 
                       <div class="link-lomba">
-                        <a href="${item.link}" target="_blank" class="box-link-lomba">
+                        <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="box-link-lomba">
                           Daftar Sekarang →
                         </a>
                       </div>

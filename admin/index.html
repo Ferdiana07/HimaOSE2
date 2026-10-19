@@ -35,10 +35,26 @@
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJmcnNndmVveWtkbWN5Y3pia2tvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5OTU1MzgsImV4cCI6MjA4OTU3MTUzOH0.4wqRmCHZjVotig4nOrLTLw0tGpDmysYmOR9H8KLEoz8"
     );
 
-    // Kalau sudah login langsung ke dashboard
-    sb.auth.getSession().then(({ data }) => {
-      if (data.session) window.location.href = "./dashboard.html";
+    async function isCurrentUserAdmin() {
+      const { data, error } = await sb.rpc("is_admin");
+      return !error && data === true;
+    }
+
+    // Session yang valid belum tentu milik admin.
+    sb.auth.getSession().then(async ({ data }) => {
+      if (!data.session) return;
+
+      if (await isCurrentUserAdmin()) {
+        window.location.replace("./dashboard.html");
+      } else {
+        await sb.auth.signOut();
+      }
     });
+
+    if (new URLSearchParams(window.location.search).get("error") === "unauthorized") {
+      document.getElementById("error-msg").textContent =
+        "Akun tersebut tidak memiliki akses admin.";
+    }
 
     document.getElementById("btn-login").addEventListener("click", async () => {
       const email    = document.getElementById("email").value.trim();
@@ -57,12 +73,21 @@
       const { error } = await sb.auth.signInWithPassword({ email, password });
 
       if (error) {
-        errMsg.textContent = "Login gagal: " + error.message;
+        errMsg.textContent = "Email atau password salah.";
         btn.textContent = "Masuk";
         btn.disabled = false;
-      } else {
-        window.location.href = "./dashboard.html";
+        return;
       }
+
+      if (!(await isCurrentUserAdmin())) {
+        await sb.auth.signOut();
+        errMsg.textContent = "Akun tersebut tidak memiliki akses admin.";
+        btn.textContent = "Masuk";
+        btn.disabled = false;
+        return;
+      }
+
+      window.location.replace("./dashboard.html");
     });
 
     // Enter key untuk submit
